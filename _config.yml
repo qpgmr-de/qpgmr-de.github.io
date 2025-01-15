@@ -6,10 +6,10 @@ description: "qpgmr.de - IBM i, SQL and RPG"
 # Email / Social media user names used by the minima theme:
 # All of these are optional and can be removed or commented out
 email: "info@qpgmr.de"
-#twitter_username: "twitteruser"
-github_username: "qpgmr-de"
-# https://www.linkedin.com/in/daniel-gross-qpgmr
 linkedin_username: "daniel-gross-qpgmr"
+github_username: "qpgmr-de"
+#twitter_username: "twitteruser"
+# https://www.linkedin.com/in/daniel-gross-qpgmr
 #facebook_username: username
 #flickr_username: username
 #instagram_username: username
