@@ -52,7 +52,7 @@ from json_table(
 
 And here is the resulting table, that the SQL statement is returning:
 
-![SQL result table](/assets/img/2021-08-19-result-table.jpeg "SQL result table")
+![SQL result table](/assets/img/2021-08-19-result-table.jpeg)
 
 This is a simple select – in line 2 the function JSON_TABLE is invoked – an it 
 receives two „parameters“ – the first is the JSON document or expression, and 
