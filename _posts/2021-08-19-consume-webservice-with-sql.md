@@ -1,4 +1,4 @@
-## Consuming a web service with SQL on IBM i (DB2)
+## Consuming a web service with SQL on IBM i
 
 Consuming web services on IBM i was never easier – but in fact, it’s nothing new, 
 the DB2 SQL functions are available at least since Version 7.2.
