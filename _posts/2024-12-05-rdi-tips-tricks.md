@@ -1,4 +1,4 @@
-## Rational Developer for i (RDi) 9.8 - Tips & Tricks - Version 9.8.0.3 update
+## Rational Developer for i (RDi) 9.8 - Tips and Tricks (Version 9.8.0.3 update)
 
 With the availability of RDi 9.8.0.3 and the latest compiler PTFs I updated my 
 compiled list of RDi 9.8 tips and tricks that piled up since the first beta. 
