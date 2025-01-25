@@ -184,9 +184,7 @@ some time.
     endif;
 end-proc;
 ```
-There is also the on-exit block in the Worker procedure. This will not only "catch" 
-runtime exceptions, but also if the thread gets canceled - you will see this here 
-in an example output:
+There is also the `on-exit` block in the Worker procedure. This will not only "catch" runtime exceptions, but also if the thread gets canceled - you will see this here in an example output.
 
 ```
 ...-11.25.49.213: Main: start of worker #1
@@ -236,20 +234,21 @@ in an example output:
 ...-11.26.09.359: Main: ending normally.
 ```
 
-As you can see, the messages of the Main procedure and the workers are interleaved 
-- so the workers are really running in parallel to each other and to the Main
-- procedure.
+As you can see, the messages of the `Main` procedure and the workers are interleaved - so the workers are really running in parallel to each other
+and to the `Main` - procedure.
 
 The cancelation of worker #1 is taking place immediately - thanks to our thread 
 attributes - and the cancel leads to an abnormal end of the thread - which is nice 
 to know, because you are able, to catch that. 
 
-It is also good to know, that pthread_join() is waiting for the given thread to 
+It is also good to know, that 
+[`phread_join()`](https://www.ibm.com/docs/en/i/7.5?topic=ssw_ibm_i_75/apis/users_25.html) is waiting for the given thread to 
 end when it is called, and that you won't receive an error, when the thread you 
 are trying to join was already canceled previously.
 
 Last but not least - multi-threading is only allowed for batch jobs which are 
-submitted with the ALWMLTTHD(*YES) parameter. Interactive jobs can't use pthreads 
+submitted with the `ALWMLTTHD(*YES)` parameter. Interactive jobs can't use 
+[pthreads](https://man7.org/linux/man-pages/man7/pthreads.7.html) 
 at all.
 
 You can find the complete program source code in my [examples repository](https://github.com/qpgmr-de/examples/blob/main/athread.rpgle) 
