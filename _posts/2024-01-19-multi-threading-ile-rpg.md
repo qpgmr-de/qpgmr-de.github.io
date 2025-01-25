@@ -1,12 +1,8 @@
 ## Multi threading with ILE-RPG
 
-The POSIX API for multithreading - called `pthreads` - is the classic way, to 
-run multiple procedures parallel at the same time and in the same process. 
-Using it in ILE-RPG is quite easy, if you know how.
+The POSIX API for multithreading - called [`pthreads`](https://man7.org/linux/man-pages/man7/pthreads.7.html) - is the classic way, to run multiple procedures parallel at the same time and in the same process. Using it in ILE-RPG is quite easy, if you know how.
 
-This example also shows, how to use standard C library functions like `printf()` 
-and `sprintf()` in your RPG programs. Especially "sprintf" can be a real time
-saver to format numbers to your needs, when `%editc()` or `%char()` aren't enough.
+This example also shows, how to use standard C library functions like [`printf()`](https://man7.org/linux/man-pages/man3/printf.3.html) and [`sprintf()`](https://man7.org/linux/man-pages/man3/sprintf.3p.html) in your RPG programs. Especially "sprintf" can be a real time saver to format numbers to your needs, when [`%editc()`](https://www.ibm.com/docs/en/i/7.5?topic=functions-editc-edit-value-using-editcode) or [`%char()`](https://www.ibm.com/docs/en/i/7.5?topic=functions-char-convert-character-data) aren't enough.
 
 Lets break down the program in pieces - we start at the top:
 
@@ -25,22 +21,13 @@ dcl-ds worker_parm_t qualified template;
 end-ds;
 ```
 
-We use free-format RPG - of course - and some standard headers. In this example, 
-I'm using a "linear" main procedure - no RPG cycle, no `*INLR` - and a named 
-activation group. The APIs should work the same with a cycle main procedure or 
-an activation group `*NEW` or even with `QILE` - but I always recommend not to use 
-the QILE activation group.
+We use free-format RPG - of course - and some standard headers. In this example, I'm using a "linear" main procedure - no RPG cycle, no `*INLR` - and a named activation group. The APIs should work the same with a cycle main procedure or an activation group `*NEW` or even with `QILE` - but I always recommend not to use the QILE activation group.
 
-We don't need special service programs or binder directories to use the pthreads 
-APIs - but we include the system headers "pthread" (maybe obvious) and "unistd" 
-(for the `sleep()` procedure) from `QSYSINC/QRPGLESRC`.
+We don't need special service programs or binder directories to use the pthreads APIs - but we include the system headers "pthread" (maybe obvious) and "unistd" (for the [`sleep()`](https://man7.org/linux/man-pages/man3/sleep.3.html) procedure) from `QSYSINC/QRPGLESRC`.
 
-We want to give our "worker" threads some parameters - and as you can only pass 
-one (!) parameter (a pointer) via the API to your "workers", we create a template 
-data structure for the "caller" and the "workers".
+We want to give our "worker" threads some parameters - and as you can only pass one (!) parameter (a pointer) via the API to your "workers", we create a template data structure for the "caller" and the "workers".
 
 Now to the "Main" procedure:
-
 ```tsql
 dcl-proc Main;
   dcl-ds workers dim(4) qualified inz;
@@ -50,29 +37,19 @@ dcl-proc Main;
 ```
 Our main procedure is called "Main" (very creative, isn't it?) and has no parameters.
 
-To remember our threads, we use a data structure array `workers`, 
-which consists of two sub data structures - one of type "pthread_t", which is 
-defined in the "pthread" include and which will hold the information about each 
-thread.
+To remember our threads, we use a data structure array `workers`, which consists of two sub data structures - one of type "pthread_t", which is 
+defined in the "pthread" include and which will hold the information about each thread.
 
-The other sub data structure uses the worker parameter template, that we defined 
-above. We will store the parameters for each thread there. You will ask yourself, 
-why do we use a seperate parameter structure for each thread?
+The other sub data structure uses the worker parameter template, that we defined above. We will store the parameters for each thread there. You will ask yourself, why do we use a seperate parameter structure for each thread?
 
-The answer is simple - as we pass a pointer to that parameter structure, we shouldn't 
-modify it after the thread is "launched". As we want each thread to have its own 
-parameters - isolated from the other threads - we use a separate data structure for 
-each thread.
+The answer is simple - as we pass a pointer to that parameter structure, we shouldn't modify it after the thread is "launched". As we want each thread to have its own parameters - isolated from the other threads - we use a separate data structure for each thread.
 
 ```tsql
   dcl-s isAbnormalEnd ind inz;
   dcl-s i int(10:0) inz;
   dcl-s rc int(10:0) inz;
 ```
-We also declare some other variables - a loop counter, the return code of the Pthread 
-APIs and a flag for the on-exit section, to detect whether the procedure was ended 
-normally (by return) or abnormal (by an exception).
-
+We also declare some other variables - a loop counter, the return code of the Pthread APIs and a flag for the on-exit section, to detect whether the procedure was ended normally (by return) or abnormal (by an exception).
 
 ```tsql
   // create 4 threads
@@ -92,12 +69,10 @@ normally (by return) or abnormal (by an exception).
 ```
 The in next part we use a simple loop to create 4 "worker 
 threads. We initialize the worker parameters and call the most important API 
-pthread_create(). After that we wait for 6 seconds using the sleep() function.
+[`pthread_create()`](https://www.ibm.com/docs/en/i/7.5?topic=ssw_ibm_i_75/apis/users_14.html). After that we wait for 6 seconds using the [`sleep()`](https://man7.org/linux/man-pages/man3/sleep.3.html) function.
 
-The print() procedure is just a simple wrapper for the C printf() function. As out 
-program can only run in batch, the output will land in a spooled file "QPRINT". We 
-will habe a look at the output later. The source code for the print() procedure can 
-be found in the complete source below.
+The print() procedure is just a simple wrapper for the C [`printf()`](https://man7.org/linux/man-pages/man3/printf.3.html) function. As out 
+program can only run in batch, the output will land in a spooled file "QPRINT". We will habe a look at the output later. The source code for our `printf()` procedure can be found in the complete source below.
 
 ```tsql
   // cancel 1st worker
@@ -105,8 +80,7 @@ be found in the complete source below.
   sleep(2);
 ```
 Now something funny - we will cancel the 1st worker thread by calling 
-pthread_cancel() passing the matching "pthread_t" data structure. Worker #1 is the 
-longest running thread - so after 6 seconds it is definitely still running.
+[`phread_cancel()`](https://www.ibm.com/docs/en/i/7.5?topic=ssw_ibm_i_75/apis/users_39.html) passing the matching "pthread_t" data structure. Worker #1 is the longest running thread - so after 6 seconds it is definitely still running.
 
 ```tsql
   print('Main: waiting for all workers ...-');
@@ -116,9 +90,7 @@ longest running thread - so after 6 seconds it is definitely still running.
 
   return;
 ```
-The last part is "joining" the worker thread to the main procedure. This is done 
-by calling pthread_join(). Each call waits for the passed thread to finish, detaches 
-it and returns the thread exit status.
+The last part is "joining" the worker thread to the main procedure. This is done by calling [`phread_join()`](https://www.ibm.com/docs/en/i/7.5?topic=ssw_ibm_i_75/apis/users_25.html). Each call waits for the passed thread to finish, detaches it and returns the thread exit status.
 
 ```tsql
   on-exit isAbnormalEnd;
@@ -129,12 +101,9 @@ it and returns the thread exit status.
     endif;
 end-proc;
 ``` 
-The last part is the `on-exit` section, this part is executed always - whether the
-procedure is ended by a regular `return` or by any error, an exception or if the
-procedure sends an `*escape` message. 
+The last part is the `on-exit` section, this part is executed always - whether the procedure is ended by a regular `return` or by any error, an exception or if the procedure sends an `*escape` message. 
 
-If the end is not due to a regular `return` the `isAbnormalEnd` flag is `*ON`, so
-you can react to the abnormal ending of your procedure.
+If the end is not due to a regular `return` the `isAbnormalEnd` flag is `*ON`, so you can react to the abnormal ending of your procedure.
 
 Our "Worker" procedure is also quite simple:
 
@@ -155,13 +124,11 @@ dcl-proc Worker;
   print('Worker #'+%char(parm.num)+': setcancelstate RC='+%char(pthread_setcancelstate(PTHREAD_CANCEL_ENABLE:i)));
   print('Worker #'+%char(parm.num)+': setcanceltype RC='+%char(pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS:i)));
 ```
-We use a small procedure "getThreadId" which simply retrieves the id of thread and 
-formats it as a string using sprintf(). The source code for the getThreadId() 
-procedure can be found in the complete source below.
+We use a small procedure `getThreadId` which simply retrieves the id of thread and formats it as a string using 
+[`sprintf()`](https://man7.org/linux/man-pages/man3/sprintf.3p.html). 
+The source code for the `gtThreadId()` procedure can be found in the complete source below.
 
-The worker sets its own thread attributes "cancelstate" and "canceltype". We want 
-our threads to be "cancelable" and do "asynchronous cancel". This means, that when 
-the thread gets canceled from "outside", it will end immediately.
+The worker sets its own thread attributes `cancelstate` and `canceltype`. We want our threads to be "cancelable" and do "asynchronous cancel". This means, that when the thread gets canceled from "outside", it will end immediately.
 
 ```tsql
   for i = 1 to 5;
@@ -184,7 +151,7 @@ some time.
     endif;
 end-proc;
 ```
-There is also the `on-exit` block in the Worker procedure. This will not only "catch" runtime exceptions, but also if the thread gets canceled - you will see this here in an example output.
+There is also the `on-exit` block in the `Worker` procedure. This will not only "catch" runtime exceptions, but also if the thread gets canceled - you will see this here in an example output.
 
 ```
 ...-11.25.49.213: Main: start of worker #1
@@ -237,24 +204,14 @@ There is also the `on-exit` block in the Worker procedure. This will not only "c
 As you can see, the messages of the `Main` procedure and the workers are interleaved - so the workers are really running in parallel to each other
 and to the `Main` - procedure.
 
-The cancelation of worker #1 is taking place immediately - thanks to our thread 
-attributes - and the cancel leads to an abnormal end of the thread - which is nice 
-to know, because you are able, to catch that. 
+The cancelation of worker #1 is taking place immediately - thanks to our thread attributes - and the cancel leads to an abnormal end of the thread - which is nice to know, because you are able, to catch that. 
 
 It is also good to know, that 
 [`phread_join()`](https://www.ibm.com/docs/en/i/7.5?topic=ssw_ibm_i_75/apis/users_25.html) is waiting for the given thread to 
-end when it is called, and that you won't receive an error, when the thread you 
-are trying to join was already canceled previously.
+end when it is called, and that you won't receive an error, when the thread you are trying to join was already canceled previously.
 
-Last but not least - multi-threading is only allowed for batch jobs which are 
-submitted with the `ALWMLTTHD(*YES)` parameter. Interactive jobs can't use 
-[pthreads](https://man7.org/linux/man-pages/man7/pthreads.7.html) 
-at all.
+Last but not least - multi-threading is only allowed for batch jobs which are submitted with the `ALWMLTTHD(*YES)` parameter. Interactive jobs can't use [pthreads](https://man7.org/linux/man-pages/man7/pthreads.7.html) at all.
 
-You can find the complete program source code in my [examples repository](https://github.com/qpgmr-de/examples/blob/main/athread.rpgle) 
-on GitHub. This includes the procedures not shown here and is ready to be cloned 
-or copied and compiled.
+You can find the complete program source code in my [examples repository](https://github.com/qpgmr-de/examples/blob/main/athread.rpgle) on GitHub. This includes the procedures not shown here and is ready to be cloned or copied and compiled.
 
 I hope you enjoyed this small example.
-
-
