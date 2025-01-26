@@ -14,6 +14,14 @@ I was already quite fluent in [BASIC](https://en.wikipedia.org/wiki/BASIC) - but
 
 The [C64](https://en.wikipedia.org/wiki/Commodore_64) was not only used for coding. [Joysticks](https://en.wikipedia.org/wiki/Atari_CX40_joystick) were the most popular peripheral back then, and we gamed a lot. We swapped [5.25" floppy disks](https://en.wikipedia.org/wiki/Floppy_disk) at the school yard and even learned how to [deactivate copy protections](https://en.wikipedia.org/wiki/Software_cracking) of games, we really liked. That was, when learning machine language came really handy.
 
+When it was time to replace the [C64](https://en.wikipedia.org/wiki/Commodore_64) the short-list included the [Atari ST](https://en.wikipedia.org/wiki/Atari_ST) and the [Commodore Amiga](https://en.wikipedia.org/wiki/Amiga_1000). The choice fell on the [Amiga](https://en.wikipedia.org/wiki/Amiga_1000) - because of the superior graphics capabilities. From the programming part, I stalled a bit on the [Amiga](https://en.wikipedia.org/wiki/Amiga_1000) - [Amiga Basic](https://en.wikipedia.org/wiki/Amiga_Basic) was OK, but I never really got "warm" with it. 
+
+After completing school in 1986, I started working as a car mechanic trainee, but never I lost interest in computers. Which was good, as besides my father I was the only one, who knew the [IBM System /36](https://en.wikipedia.org/wiki/IBM_System/36) that was running the business software in the company of my parents. 
+
+### Becoming a professional software developer
+
+In school again I learned [Pascal](https://en.wikipedia.org/wiki/Turbo_Pascal) and finally decided to become a professional software developer. That meant 3 more years in [school](https://www.bsz-wiesau.de/informatik-campus) and a lot to learn. 
+
 
 
 
