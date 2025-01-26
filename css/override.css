@@ -43,3 +43,15 @@ hr {
   font-size: 2.5em;
   opacity: 0.3;
 }
+
+.footer-col-1 {
+  width: calc(40% - (#{$spacing-unit} / 2));
+}
+
+.footer-col-2 {
+  width: calc(60% - (#{$spacing-unit} / 2));
+}
+
+.footer-col-3 {
+  width: calc(100% - (#{$spacing-unit} / 2));
+}
