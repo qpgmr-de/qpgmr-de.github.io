@@ -58,7 +58,7 @@ hr {
 
 @media screen and (min-width: $on-large) {
   .footer-col-1 {
-    width: calc(35% - (#{$spacing-unit} / 2));
+    width: calc(20% - (#{$spacing-unit} / 2));
   }
 
   .footer-col-2 {
@@ -66,7 +66,7 @@ hr {
   }
 
   .footer-col-3 {
-    width: calc(30% - (#{$spacing-unit} / 2));
+    width: calc(45% - (#{$spacing-unit} / 2));
   }
 }
 
