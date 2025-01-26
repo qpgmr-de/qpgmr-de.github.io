@@ -22,6 +22,6 @@ After completing school in 1986, I started working as a car mechanic trainee, bu
 
 In school again I learned [Pascal](https://en.wikipedia.org/wiki/Turbo_Pascal) and finally decided to become a professional software developer. That meant 3 more years in [school](https://www.bsz-wiesau.de/informatik-campus) and a lot to learn. 
 
-
+The school teached me computer hardware, software developement techniques, [C](https://en.wikipedia.org/wiki/C_(programming_language)), [COBOL](https://en.wikipedia.org/wiki/COBOL), [Mainframe Assembly language](https://en.wikipedia.org/wiki/IBM_Basic_assembly_language_and_successors), database systems and design, [SQL](https://en.wikipedia.org/wiki/SQL) and finally [RPG](https://en.wikipedia.org/wiki/IBM_RPG). To complete school a intership of 6 months was mandatory. 
 
 
