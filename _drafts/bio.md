@@ -2,6 +2,18 @@
 
 ### How it all started ...
 
-I was born in a small town called Pegnitz (Bavaria, Germany) in 1969 - just a few days after the Apollo 11 astronauts arrived back on Earth. 
+I was born in a small town called Pegnitz (Bavaria, Germany) in 1969 - just a few days after the Apollo 11 astronauts arrived back on Earth. The 1970s were a somehow strange and very colorful time (like yellow shirts and green pants) to grow up - but computers weren't a big thing in Germany at that time. 
 
-The 1970s were a somehow strange and very colorful time (like yellow shirts and green pants - and more fashion sins) and I during that time, 
+Fast forward to my first contact with a computer. It was an eveing in 1981 when my late father brought the first computer into our house. He told us, that "*if you don't learn about computers, you might not have a job in the future*" - and in hindsight, it seems, he was very right with that.
+
+The small machine was a [Sinclait ZX-81](https://en.wikipedia.org/wiki/ZX81) with an "enormous" capacity of 1 KB RAM, a 3.25 MHz Z80 CPU and no permanent storage aside from a self-supplied cassette recorder. The [ZX-81 manual](http://www.retro8bitcomputers.co.uk/Content/downloads/manuals/zx81-basic-manual.pdf) was really good, and learning [BASIC](https://en.wikipedia.org/wiki/BASIC) was quite easy for me. So I fiddled around and even wrote my first small computer game. But after about a year and a half, the ZX-81 was really too small, and especially the pressure sensitive membrane keyboard was a real PITA.
+
+So in 1983 it was decided to "upgrade" the family computer. The home computer market boomed at that point, and there were all sorts of computers available. After some months of research (without the Internet back then) the list was reduced to two machines: the [Sinclair ZX Spectrum](https://en.wikipedia.org/wiki/ZX_Spectrum) and the [Commodore 64](https://en.wikipedia.org/wiki/Commodore_64). In the end, the [C64](https://en.wikipedia.org/wiki/Commodore_64) was choosen - first and formost because it had a propper keyboard, whereas the [Spectrum](https://en.wikipedia.org/wiki/ZX_Spectrum) had a that rubber thingy that nobody really could take serious. 
+
+I was already quite fluent in [BASIC](https://en.wikipedia.org/wiki/BASIC) - but a bit disapointed, because the [Commodore BASIC V2](https://en.wikipedia.org/wiki/Commodore_BASIC) was not really advanced. So I tried arround with different languages. [Simons' BASIC](https://en.wikipedia.org/wiki/Simons%27_BASIC), [Logo](https://en.wikipedia.org/wiki/Logo_(programming_language)), [COMAL](https://en.wikipedia.org/wiki/COMAL) and finally [Assembly language](https://en.wikipedia.org/wiki/Assembly_language) - better Machine Code, because I really started with manually translating Mnemonic instructions to hex-decimal machine code and [POKE](https://en.wikipedia.org/wiki/PEEK_and_POKE)'d it directly into memory.
+
+The [C64](https://en.wikipedia.org/wiki/Commodore_64) was not only used for coding. [Joysticks](https://en.wikipedia.org/wiki/Atari_CX40_joystick) were the most popular peripheral back then, and we gamed a lot. We swapped [5.25" floppy disks](https://en.wikipedia.org/wiki/Floppy_disk) at the school yard and even learned how to [deactivate copy protections](https://en.wikipedia.org/wiki/Software_cracking) of games, we really liked. That was, when learning machine language came really handy.
+
+
+
+
