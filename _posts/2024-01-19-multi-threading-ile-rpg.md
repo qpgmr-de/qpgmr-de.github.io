@@ -6,20 +6,7 @@ This example also shows, how to use standard C library functions like [`printf()
 
 Lets break down the program in pieces - we start at the top:
 
-```rpg
-**free
-ctl-opt main(main) dftactgrp(*no) actgrp('ATHREAD');
-ctl-opt datedit(*dmy/) option(*srcstmt:*nodebugio);
-
-/copy qsysinc/qrpglesrc,pthread        // PThread prototypes
-/copy qsysinc/qrpglesrc,unistd         // misc prototypes (e.g. sleep)
-
-// template for worker parameters
-dcl-ds worker_parm_t qualified template;
-  num int(10:0);
-  delay int(10:0);
-end-ds;
-```
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part01.rpgle"></script>
 
 We use free-format RPG - of course - and some standard headers. In this example, I'm using a "linear" main procedure - no RPG cycle, no `*INLR` - and a named activation group. The APIs should work the same with a cycle main procedure or an activation group `*NEW` or even with `QILE` - but I always recommend not to use the QILE activation group.
 
