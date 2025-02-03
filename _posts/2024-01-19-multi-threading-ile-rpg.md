@@ -15,13 +15,9 @@ We don't need special service programs or binder directories to use the pthreads
 We want to give our "worker" threads some parameters - and as you can only pass one (!) parameter (a pointer) via the API to your "workers", we create a template data structure for the "caller" and the "workers".
 
 Now to the "Main" procedure:
-```tsql
-dcl-proc Main;
-  dcl-ds workers dim(4) qualified inz;
-    thread likeds(pthread_t);
-    parm likeds(worker_parm_t);
-  end-ds;
-```
+
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part02.rpgle"></script>
+
 Our main procedure is called "Main" (very creative, isn't it?) and has no parameters.
 
 To remember our threads, we use a data structure array `workers`, which consists of two sub data structures - one of type "pthread_t", which is 
@@ -31,29 +27,12 @@ The other sub data structure uses the worker parameter template, that we defined
 
 The answer is simple - as we pass a pointer to that parameter structure, we shouldn't modify it after the thread is "launched". As we want each thread to have its own parameters - isolated from the other threads - we use a separate data structure for each thread.
 
-```tsql
-  dcl-s isAbnormalEnd ind inz;
-  dcl-s i int(10:0) inz;
-  dcl-s rc int(10:0) inz;
-```
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part03.rpgle"></script>
+
 We also declare some other variables - a loop counter, the return code of the Pthread APIs and a flag for the on-exit section, to detect whether the procedure was ended normally (by return) or abnormal (by an exception).
 
-```tsql
-  // create 4 threads
-  for i = 1 to 4;
-    workers(i).parm.num = i;
-    workers(i).parm.delay = 6 - i;
-    rc = pthread_create(workers(i).thread:*omit:%paddr(worker):%addr(workers(i).parm));
-    if rc = 0;
-      print('Main: start of worker #'+%char(workers(i).parm.num));
-    else;
-      print('Main: start of worker #'+%char(workers(i).parm.num)+' failed with RC='+%char(rc));
-    endif;
-  endfor;
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part04.rpgle"></script>
 
-  print('Main: waiting 6 seconds ...-');
-  sleep(6);
-```
 The in next part we use a simple loop to create 4 "worker 
 threads. We initialize the worker parameters and call the most important API 
 [`pthread_create()`](https://www.ibm.com/docs/en/i/7.5?topic=ssw_ibm_i_75/apis/users_14.html). After that we wait for 6 seconds using the [`sleep()`](https://man7.org/linux/man-pages/man3/sleep.3.html) function.
@@ -61,83 +40,38 @@ threads. We initialize the worker parameters and call the most important API
 The print() procedure is just a simple wrapper for the C [`printf()`](https://man7.org/linux/man-pages/man3/printf.3.html) function. As out 
 program can only run in batch, the output will land in a spooled file "QPRINT". We will habe a look at the output later. The source code for our `printf()` procedure can be found in the complete source below.
 
-```tsql
-  // cancel 1st worker
-  print('Main: cancel worker #1 RC='+%char(pthread_cancel(workers(1).thread)));
-  sleep(2);
-```
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part05.rpgle"></script>
+
 Now something funny - we will cancel the 1st worker thread by calling 
 [`phread_cancel()`](https://www.ibm.com/docs/en/i/7.5?topic=ssw_ibm_i_75/apis/users_39.html) passing the matching "pthread_t" data structure. Worker #1 is the longest running thread - so after 6 seconds it is definitely still running.
 
-```tsql
-  print('Main: waiting for all workers ...-');
-  for i = 4 downto 1;
-    print('Main: joining worker #'+%char(workers(i).parm.num)+' RC='+%char(pthread_join(workers(i).thread:*omit)));
-  endfor;
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part06.rpgle"></script>
 
-  return;
-```
 The last part is "joining" the worker thread to the main procedure. This is done by calling [`phread_join()`](https://www.ibm.com/docs/en/i/7.5?topic=ssw_ibm_i_75/apis/users_25.html). Each call waits for the passed thread to finish, detaches it and returns the thread exit status.
 
-```tsql
-  on-exit isAbnormalEnd;
-    if isAbnormalEnd;
-      print('Main: ending abnormally!');
-    else;
-      print('Main: ending normally.');
-    endif;
-end-proc;
-``` 
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part06.rpgle"></script>
+
 The last part is the `on-exit` section, this part is executed always - whether the procedure is ended by a regular `return` or by any error, an exception or if the procedure sends an `*escape` message. 
 
 If the end is not due to a regular `return` the `isAbnormalEnd` flag is `*ON`, so you can react to the abnormal ending of your procedure.
 
 Our "Worker" procedure is also quite simple:
 
-```tsql
-dcl-proc Worker;
-  dcl-pi *n;
-    parm_ptr pointer value;
-  end-pi;
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part08.rpgle"></script>
 
-  dcl-ds parm likeds(worker_parm_t) based(parm_ptr);
-  dcl-s i int(10:0) inz;
-  dcl-s start timestamp(12) inz;
-  dcl-s runtime packed(10:5) inz;
-  dcl-s isAbnormalEnd ind inz;
-
-  start = %timestamp(*sys:12);
-  print('Worker #'+%char(parm.num)+': has thread-id '+getThreadId()+'.');
-  print('Worker #'+%char(parm.num)+': setcancelstate RC='+%char(pthread_setcancelstate(PTHREAD_CANCEL_ENABLE:i)));
-  print('Worker #'+%char(parm.num)+': setcanceltype RC='+%char(pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS:i)));
-```
 We use a small procedure `getThreadId` which simply retrieves the id of thread and formats it as a string using 
 [`sprintf()`](https://man7.org/linux/man-pages/man3/sprintf.3p.html). 
 The source code for the `gtThreadId()` procedure can be found in the complete source below.
 
 The worker sets its own thread attributes `cancelstate` and `canceltype`. We want our threads to be "cancelable" and do "asynchronous cancel". This means, that when the thread gets canceled from "outside", it will end immediately.
 
-```tsql
-  for i = 1 to 5;
-    print('Worker #'+%char(parm.num)+': waiting '+%char(parm.delay)+' seconds ...-');
-    sleep(parm.delay);
-  endfor;
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part09.rpgle"></script>
 
-  return;
-```
 The "work" that is done is just for the demonstration and to give the main procedure 
 some time.
 
-```tsql
-  on-exit isAbnormalEnd;
-    runtime = %diff(%timestamp(*sys:12):start:*seconds:5);
-    if isAbnormalEnd;
-      print('Worker #'+%char(parm.num)+': ending abnormally after '+%char(runtime)+'s!');
-    else;
-      print('Worker #'+%char(parm.num)+': ending normally after '+%char(runtime)+'s.');
-    endif;
-end-proc;
-```
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part10.rpgle"></script>
+
 There is also the `on-exit` block in the `Worker` procedure. This will not only "catch" runtime exceptions, but also if the thread gets canceled - you will see this here in an example output.
 
 ```
