@@ -6,7 +6,7 @@ This example also shows, how to use standard C library functions like [`printf()
 
 Lets break down the program in pieces - we start at the top:
 
-<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part01.rpgle"></script>
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=multi-threading-ile-rpg-01.rpgle"></script>
 
 We use free-format RPG - of course - and some standard headers. In this example, I'm using a "linear" main procedure - no RPG cycle, no `*INLR` - and a named activation group. The APIs should work the same with a cycle main procedure or an activation group `*NEW` or even with `QILE` - but I always recommend not to use the QILE activation group.
 
@@ -16,7 +16,7 @@ We want to give our "worker" threads some parameters - and as you can only pass 
 
 Now to the "Main" procedure:
 
-<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part02.rpgle"></script>
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=multi-threading-ile-rpg-02.rpgle"></script>
 
 Our main procedure is called "Main" (very creative, isn't it?) and has no parameters.
 
@@ -27,11 +27,11 @@ The other sub data structure uses the worker parameter template, that we defined
 
 The answer is simple - as we pass a pointer to that parameter structure, we shouldn't modify it after the thread is "launched". As we want each thread to have its own parameters - isolated from the other threads - we use a separate data structure for each thread.
 
-<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part03.rpgle"></script>
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=multi-threading-ile-rpg-03.rpgle"></script>
 
 We also declare some other variables - a loop counter, the return code of the Pthread APIs and a flag for the on-exit section, to detect whether the procedure was ended normally (by return) or abnormal (by an exception).
 
-<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part04.rpgle"></script>
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=multi-threading-ile-rpg-04.rpgle"></script>
 
 The in next part we use a simple loop to create 4 "worker 
 threads. We initialize the worker parameters and call the most important API 
@@ -40,16 +40,16 @@ threads. We initialize the worker parameters and call the most important API
 The print() procedure is just a simple wrapper for the C [`printf()`](https://man7.org/linux/man-pages/man3/printf.3.html) function. As out 
 program can only run in batch, the output will land in a spooled file "QPRINT". We will habe a look at the output later. The source code for our `printf()` procedure can be found in the complete source below.
 
-<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part05.rpgle"></script>
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=multi-threading-ile-rpg-05.rpgle"></script>
 
 Now something funny - we will cancel the 1st worker thread by calling 
 [`phread_cancel()`](https://www.ibm.com/docs/en/i/7.5?topic=ssw_ibm_i_75/apis/users_39.html) passing the matching "pthread_t" data structure. Worker #1 is the longest running thread - so after 6 seconds it is definitely still running.
 
-<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part06.rpgle"></script>
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=multi-threading-ile-rpg-06.rpgle"></script>
 
 The last part is "joining" the worker thread to the main procedure. This is done by calling [`phread_join()`](https://www.ibm.com/docs/en/i/7.5?topic=ssw_ibm_i_75/apis/users_25.html). Each call waits for the passed thread to finish, detaches it and returns the thread exit status.
 
-<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part06.rpgle"></script>
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=multi-threading-ile-rpg-07.rpgle"></script>
 
 The last part is the `on-exit` section, this part is executed always - whether the procedure is ended by a regular `return` or by any error, an exception or if the procedure sends an `*escape` message. 
 
@@ -57,7 +57,7 @@ If the end is not due to a regular `return` the `isAbnormalEnd` flag is `*ON`, s
 
 Our "Worker" procedure is also quite simple:
 
-<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part08.rpgle"></script>
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=multi-threading-ile-rpg-08.rpgle"></script>
 
 We use a small procedure `getThreadId` which simply retrieves the id of thread and formats it as a string using 
 [`sprintf()`](https://man7.org/linux/man-pages/man3/sprintf.3p.html). 
@@ -65,12 +65,12 @@ The source code for the `gtThreadId()` procedure can be found in the complete so
 
 The worker sets its own thread attributes `cancelstate` and `canceltype`. We want our threads to be "cancelable" and do "asynchronous cancel". This means, that when the thread gets canceled from "outside", it will end immediately.
 
-<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part09.rpgle"></script>
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=multi-threading-ile-rpg-09.rpgle"></script>
 
 The "work" that is done is just for the demonstration and to give the main procedure 
 some time.
 
-<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=part10.rpgle"></script>
+<script src="https://gist.github.com/qpgmr-de/f14b15fb3e7cb2cc91b6699a8f52f680.js?file=multi-threading-ile-rpg-10.rpgle"></script>
 
 There is also the `on-exit` block in the `Worker` procedure. This will not only "catch" runtime exceptions, but also if the thread gets canceled - you will see this here in an example output.
 
