@@ -49,11 +49,11 @@ hr {
 }
 
 .footer-col-2 {
-  width: calc(70% - (#{$spacing-unit} / 2));
+  width: calc(100% - (#{$spacing-unit} / 2));
 }
 
 .footer-col-3 {
-  width: calc(100% - (#{$spacing-unit} / 2));
+  width: calc(70% - (#{$spacing-unit} / 2));
 }
 
 @media screen and (min-width: $on-large) {
