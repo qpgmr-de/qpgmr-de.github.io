@@ -62,11 +62,11 @@ hr {
   }
 
   .footer-col-2 {
-    width: calc(35% - (#{$spacing-unit} / 2));
+    width: calc(40% - (#{$spacing-unit} / 2));
   }
 
   .footer-col-3 {
-    width: calc(45% - (#{$spacing-unit} / 2));
+    width: calc(40% - (#{$spacing-unit} / 2));
   }
 }
 
