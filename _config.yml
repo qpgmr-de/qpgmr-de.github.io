@@ -20,8 +20,8 @@ github_username: "qpgmr-de"
 #########################################################################################
 ######### Nothing below needs to be changed (unless you know what you're doing) #########
 #########################################################################################
-#theme: "minima"
-theme: "minimal-mistakes"
+theme: "minima"
+#theme: "minimal-mistakes"
 
 rss: rss
 
