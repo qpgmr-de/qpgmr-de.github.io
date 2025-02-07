@@ -13,7 +13,7 @@ the free tier is OK.
 
 Let’s start with the code:
 
-```tsql
+```sql
 select *
 from json_table(
   qsys2.http_get('http://api.openweathermap.org/data/2.5/forecast?zip={...ZIP...},{...COUNTRY...}&amp;units=metric&amp;appid={...API-KEY...}')
