@@ -17,6 +17,8 @@ github_username: "qpgmr-de"
 #youtube_username: username
 #googleplus_username: +username
 
+minima.date_format: "%Y-%02M-%02d"
+
 #########################################################################################
 ######### Nothing below needs to be changed (unless you know what you're doing) #########
 #########################################################################################
