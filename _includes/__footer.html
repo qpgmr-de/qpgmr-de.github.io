@@ -17,9 +17,27 @@
       </div>
       <div class="footer-col footer-col-2">
         <ul class="social-media-list">
-          {%- for entry in site.minima.social_links -%}
-          {%- include social-item.html item = entry -%}
-          {%- endfor -%}
+          <li>
+            <a rel="me" href="{{ site.linkedin_username }}" target="_blank" title="LinkedIn">
+            <svg class="svg-icon grey">
+              <use xlink:href="{{ '/assets/minima-social-icons.svg#' | append: linkedin | relative_url }}"></use>
+            </svg>
+            </a>
+          </li>          
+          <li>
+            <a rel="me" href="{{ site.github_username }}" target="_blank" title="GitHub">
+            <svg class="svg-icon grey">
+              <use xlink:href="{{ '/assets/minima-social-icons.svg#' | append: github | relative_url }}"></use>
+            </svg>
+            </a>
+          </li>          
+          <li>
+            <a href="feed.xml" target="_blank" title="RSS">
+            <svg class="svg-icon grey">
+              <use xlink:href="{{ '/assets/minima-social-icons.svg#' | append: rss | relative_url }}"></use>
+            </svg>
+            </a>
+          </li>          
         </ul>
       </div>
       <div class="footer-col footer-col-3">
