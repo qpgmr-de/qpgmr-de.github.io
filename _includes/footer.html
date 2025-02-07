@@ -17,7 +17,9 @@
       </div>
       <div class="footer-col footer-col-2">
         <ul class="social-media-list">
-          {%- include social.html -%}
+          {%- for entry in site.minima.social_links -%}
+          {%- include social-item.html item = entry -%}
+          {%- endfor -%}
         </ul>
       </div>
       <div class="footer-col footer-col-3">
