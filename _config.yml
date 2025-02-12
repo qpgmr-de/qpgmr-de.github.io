@@ -17,15 +17,15 @@ github_username: "qpgmr-de"
 #youtube_username: username
 #googleplus_username: +username
 
-minima.date_format: "%Y-%02M-%02d"
+date_format: "%Y-%02M-%02d"
 
 #########################################################################################
 ######### Nothing below needs to be changed (unless you know what you're doing) #########
 #########################################################################################
+theme: "minima"
 #theme: "hacker"
-#theme: "minima"
 #theme: jekyll-theme-minimal
-remote_theme: pages-themes/minimal@v0.2.0
+#remote_theme: pages-themes/minimal@v0.2.0
 
 rss: rss
 
@@ -37,7 +37,7 @@ kramdown:
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-remote-theme
+# - jekyll-remote-theme
 
 titles_from_headings:
   strip_title: true
