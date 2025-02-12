@@ -12,11 +12,6 @@
           {% if site.email -%}
           <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
           {%- endif %}
-        </ul>
-        {%- endif %}
-      </div>
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
           <li>
             <a rel="me" href="{{ site.linkedin_username }}" target="_blank" title="LinkedIn">
             <svg class="svg-icon grey">
@@ -39,6 +34,9 @@
             </a>
           </li>          
         </ul>
+        {%- endif %}
+      </div>
+      <div class="footer-col footer-col-2">
       </div>
       <div class="footer-col footer-col-3">
         <p>{{ site.description | escape }}</p>
