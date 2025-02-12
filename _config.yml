@@ -22,9 +22,10 @@ minima.date_format: "%Y-%02M-%02d"
 #########################################################################################
 ######### Nothing below needs to be changed (unless you know what you're doing) #########
 #########################################################################################
-theme: "hacker"
+#theme: "hacker"
 #theme: "minima"
 #theme: jekyll-theme-minimal
+remote_theme: pages-themes/minimal@v0.2.0
 
 rss: rss
 
@@ -36,6 +37,7 @@ kramdown:
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-remote-theme
 
 titles_from_headings:
   strip_title: true
