@@ -15,8 +15,7 @@
           </li>
           {%- if site.email -%}
           <li>
-            <svg class="svg-icon"><use xlink:href="{{ '/assets/email.svg' | relative_url }}"></use></svg>
-            <a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a>
+            <a class="u-email" href="mailto:{{ site.email }}"><img href="/assets/email.png">Mail</img> {{ site.email }}</a>
           </li>
           {%- endif -%}
           <!-- contents of social.html -->
