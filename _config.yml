@@ -22,8 +22,9 @@ minima.date_format: "%Y-%02M-%02d"
 #########################################################################################
 ######### Nothing below needs to be changed (unless you know what you're doing) #########
 #########################################################################################
-theme: "minima"
-#theme: "minimal-mistakes"
+#theme: "hacker"
+#theme: "minima"
+#theme: jekyll-theme-minimal
 
 rss: rss
 
