@@ -1,5 +1,8 @@
 #########################################################################################
 ### template used -> https://github.com/jekyll/minima/tree/2.5-stable
+###
+### https://github.com/chadbaldwin/simple-blog-bootstrap
+### https://chadbaldwin.net/2021/03/14/how-to-build-a-sql-blog.html
 ### many changes 
 #########################################################################################
 title: "QPGMR Blog"
@@ -13,7 +16,6 @@ email: "info@qpgmr.de"
 linkedin_username: "daniel-gross-qpgmr"
 github_username: "qpgmr-de"
 #twitter_username: "twitteruser"
-# https://www.linkedin.com/in/daniel-gross-qpgmr
 #facebook_username: username
 #flickr_username: username
 #instagram_username: username
