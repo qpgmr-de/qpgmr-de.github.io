@@ -1,3 +1,7 @@
+#########################################################################################
+### template used -> https://github.com/jekyll/minima/tree/2.5-stable
+### many changes 
+#########################################################################################
 title: "QPGMR Blog"
 author: "Daniel Gross"
 description: "IBM i, SQL, RPG and anything else …" 
