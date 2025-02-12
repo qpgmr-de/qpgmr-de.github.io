@@ -23,7 +23,7 @@ github_username: "qpgmr-de"
 
 show_excerpts: true
 minima:
-  date_format: "%Y-%02M-%02d"
+  date_format: "%Y-%02m-%02d"
 
 #########################################################################################
 ######### Nothing below needs to be changed (unless you know what you're doing) #########
