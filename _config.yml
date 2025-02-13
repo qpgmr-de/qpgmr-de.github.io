@@ -28,6 +28,7 @@ minima:
   date_format: "%Y-%02m-%02d"
 
 header_pages:
+  - resume.md
   - computer-history.md
 # - portfolio.md
 
