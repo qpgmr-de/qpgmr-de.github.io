@@ -21,19 +21,16 @@ When it was time to replace the [C64](https://en.wikipedia.org/wiki/Commodore_64
 
 Around that time the company of my parents needed their first computer. And this was the first time, when I touched an IBM midrange machine: an [IBM System /36](https://en.wikipedia.org/wiki/IBM_System/36) Model 5362. Until then I only knew home coputers - single user machines - and now seeing a computer where multiple users could work at the same time, was really cool. I still remember some of games, that were installed on the machine - especially "Excalibur" (some kind of text adventure).
 
-I learned Pascal in School on [Commodore Amigas](https://en.wikipedia.org/wiki/Amiga_1000) which were extended with the [1060 Sidecar extension](https://en.wikipedia.org/wiki/Amiga_Sidecar) and running [Turbo Pascal](https://en.wikipedia.org/wiki/Turbo_Pascal) on [MS-DOS](https://en.wikipedia.org/wiki/MS-DOS). 
+I learned [Pascal](https://en.wikipedia.org/wiki/Turbo_Pascal) in technical college (called "Fachoberschule" in German). The school was (somewhat strangly) equipped with [Commodore Amigas](https://en.wikipedia.org/wiki/Amiga_1000) which were all extended with the [1060 Sidecar extension](https://en.wikipedia.org/wiki/Amiga_Sidecar). That made it possible to run [MS-DOS](https://en.wikipedia.org/wiki/MS-DOS) and [Turbo Pascal](https://en.wikipedia.org/wiki/Turbo_Pascal) on them. 
 
-
-As my brother wanted to keep the Amiga, I decided to buy my first [IBM AT](https://en.wikipedia.org/wiki/IBM_Personal_Computer_AT) [compatible 286-clone](https://en.wikipedia.org/wiki/IBM_PC_compatible), so I was able to program Turbo Pascal.
-
-
-
-After completing school in 1986, I started working as a car mechanic trainee, but never I lost interest in computers. Which was good, as besides my father I was the only one, who knew the  that was running the business software in the company of my parents. 
+Sadly at home, I didn't have a Sidecar - so after some time, I decided to leave the Amiga behind, and buy my first [IBM AT](https://en.wikipedia.org/wiki/IBM_Personal_Computer_AT) [compatible 286-clone](https://en.wikipedia.org/wiki/IBM_PC_compatible). The games on the Amiga were much better, but now I was able to program Turbo Pascal at home.
 
 ### Becoming a professional software developer
 
-In school again I learned [Pascal](https://en.wikipedia.org/wiki/Turbo_Pascal) and finally decided to become a professional software developer. That meant 3 more years in [school](https://www.bsz-wiesau.de/informatik-campus) and a lot to learn. 
+After completing secondary school ("Realschule" in German) in 1986, I've was a car mechanic trainee in my parents company. When I had finished the training, I went back to technical college to get my diploma ("Fachabitur" in German). And following that I decided to make my computer hobby a profession, and switched to vocational school ("[Berufsfachschule](https://www.bsz-wiesau.de/informatik-campus)" in German). 
 
-The school teached me computer hardware, software developement techniques, [C](https://en.wikipedia.org/wiki/C_(programming_language)), [COBOL](https://en.wikipedia.org/wiki/COBOL), [Mainframe Assembly language](https://en.wikipedia.org/wiki/IBM_Basic_assembly_language_and_successors), database systems and design, [SQL](https://en.wikipedia.org/wiki/SQL) and finally [RPG](https://en.wikipedia.org/wiki/IBM_RPG). 
+The school teached me computer hardware, software developement techniques, [C](https://en.wikipedia.org/wiki/C_(programming_language)), [COBOL](https://en.wikipedia.org/wiki/COBOL), [Mainframe Assembly language](https://en.wikipedia.org/wiki/IBM_Basic_assembly_language_and_successors), database systems and design, [SQL](https://en.wikipedia.org/wiki/SQL) and finally [RPG](https://en.wikipedia.org/wiki/IBM_RPG).
 
-To complete school a two interships of about 3 months each were mandatory. 
+The school also introduced me to the [IBM AS/400](https://en.wikipedia.org/wiki/IBM_AS/400). It was the successor of [IBM's System /36](https://en.wikipedia.org/wiki/IBM_System/36) and [System /38](https://en.wikipedia.org/wiki/IBM_System/38). And it was technically revolutionary back then. 
+
+Throughout my career I used and programmed a lot of computer systems, but I always came back to IBM's midrange system. Whether it was called [IBM AS/400](https://en.wikipedia.org/wiki/IBM_AS/400), [IBM iSeries](https://en.wikipedia.org/wiki/IBM_eServer), [IBM System/i](https://en.wikipedia.org/wiki/IBM_eServer) or now [IBM i](https://en.wikipedia.org/wiki/IBM_i) on [Power](https://en.wikipedia.org/wiki/IBM_Power_Systems).
