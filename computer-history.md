@@ -1,7 +1,6 @@
 ---
 layout: page
-title: Computer history
-subtitle: Why you'd want to go on a date with me
+title: Computer History
 ---
 ## My personal computer history
 
