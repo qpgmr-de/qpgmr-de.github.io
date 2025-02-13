@@ -1,9 +1,11 @@
 ---
 layout: page
-title: My personal computer history
+title: Computer history
 subtitle: Why you'd want to go on a date with me
 ---
-### How it all started ...
+## My personal computer history
+
+### or, how it all got started ...
 
 It was an evening in 1981 when my late father brought the first computer into our house. He told us, that "*if you don't learn about computers, you might not have a job in the future*" - and in hindsight, it seems, he was very right with that.
 
@@ -17,11 +19,16 @@ The [C64](https://en.wikipedia.org/wiki/Commodore_64) was not only used for codi
 
 When it was time to replace the [C64](https://en.wikipedia.org/wiki/Commodore_64) the short-list included the [Atari ST](https://en.wikipedia.org/wiki/Atari_ST) and the [Commodore Amiga](https://en.wikipedia.org/wiki/Amiga_1000). The choice fell on the [Amiga](https://en.wikipedia.org/wiki/Amiga_1000) - because of the superior graphics capabilities. From the programming part, I stalled a bit on the [Amiga](https://en.wikipedia.org/wiki/Amiga_1000) - [Amiga Basic](https://en.wikipedia.org/wiki/Amiga_Basic) was OK, but I never really got "warm" with it. 
 
-I learned Pascal in School on [Commodore Amigas](https://en.wikipedia.org/wiki/Amiga_1000) which were extended with the [1060 Sidecar extension](https://en.wikipedia.org/wiki/Amiga_Sidecar) and running [Turbo Pascal](https://en.wikipedia.org/wiki/Turbo_Pascal) on [MS-DOS](https://en.wikipedia.org/wiki/MS-DOS). As my brother wanted to keep the Amiga, I decided to buy my first [IBM AT](https://en.wikipedia.org/wiki/IBM_Personal_Computer_AT) [compatible 286-clone](https://en.wikipedia.org/wiki/IBM_PC_compatible), so I was able to program Turbo Pascal.
+Around that time the company of my parents needed their first computer. And this was the first time, when I touched an IBM midrange machine: an [IBM System /36](https://en.wikipedia.org/wiki/IBM_System/36) Model 5362. Until then I only knew home coputers - single user machines - and now seeing a computer where multiple users could work at the same time, was really cool. I still remember some of games, that were installed on the machine - especially "Excalibur" (some kind of text adventure).
+
+I learned Pascal in School on [Commodore Amigas](https://en.wikipedia.org/wiki/Amiga_1000) which were extended with the [1060 Sidecar extension](https://en.wikipedia.org/wiki/Amiga_Sidecar) and running [Turbo Pascal](https://en.wikipedia.org/wiki/Turbo_Pascal) on [MS-DOS](https://en.wikipedia.org/wiki/MS-DOS). 
+
+
+As my brother wanted to keep the Amiga, I decided to buy my first [IBM AT](https://en.wikipedia.org/wiki/IBM_Personal_Computer_AT) [compatible 286-clone](https://en.wikipedia.org/wiki/IBM_PC_compatible), so I was able to program Turbo Pascal.
 
 
 
-After completing school in 1986, I started working as a car mechanic trainee, but never I lost interest in computers. Which was good, as besides my father I was the only one, who knew the [IBM System /36](https://en.wikipedia.org/wiki/IBM_System/36) that was running the business software in the company of my parents. 
+After completing school in 1986, I started working as a car mechanic trainee, but never I lost interest in computers. Which was good, as besides my father I was the only one, who knew the  that was running the business software in the company of my parents. 
 
 ### Becoming a professional software developer
 
