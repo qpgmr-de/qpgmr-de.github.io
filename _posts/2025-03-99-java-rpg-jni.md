@@ -4,18 +4,23 @@ The possibility to create and use Java objects from RPG is nothing new - at
 least I found it even in IBM i 7.2. But the documentation and the example 
 source code is still in fix format RPG. 
 
-So when I had to do split multi-page PDF files into one page per PDF files,
-I quickly turned to [Apache PDFBox®](https://pdfbox.apache.org) as it is
-a very nice library, which
+So when I had to create a solution, to split multi-page PDF files into one 
+page per PDF files, I quickly turned to Apache PDFBox® [^1] - a very versatile
+library, which makes all kinds of operations with PDF files.
+[^1]: https://pdfbox.apache.org
 
-It was quite easy, to find the necessary information in the Info Center:
+It was quite easy, to find the necessary information in the Info Center [^2] - but sadly all examples are in the old fixed-form/FREE source code format.
+[^2]: https://www.ibm.com/docs/en/i/7.5?topic=world-rpg-java
 
-- https://www.ibm.com/docs/en/i/7.5?topic=world-rpg-java
+Many of the examples use a copy-file `JAVAUTIL`[^3] that makes is easy 
+[^3]: https://www.ibm.com/docs/en/i/7.5?topic=java-additional-rpg-coding-using
 
-Sadly all examples are in the old fixed-form/FREE source code format. Many
-examples use a copy-file [`JAVAUTIL`](https://www.ibm.com/docs/en/i/7.5?topic=java-additional-rpg-coding-using) 
+but the copy-file and its
+sevice program is only shown in fragments
+
 which defines some [JNI (Java Native Interface)](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/)
 prototypes. You can download the original here:
+
 
 - https://www.ibm.com/support/pages/jni-utilities-ile-rpg-programmers-guide
 
@@ -39,6 +44,9 @@ ctl-opt thread(*serialize);
 ctl-opt bnddir('JAVAUTIL');
 /include javautil
 ```
+
+
+
 
 
 
