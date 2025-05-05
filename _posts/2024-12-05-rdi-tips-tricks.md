@@ -127,15 +127,15 @@ to an update site is configured in the previous paragraph.
 
 - iSphere – the RDi users „Swiss-army-knife“ plugin
 
-  https://github.com/rdi-open-source/isphere
+  https://rdi-open-source.github.io/isphere//update-site/eclipse/rdi8.0
   
 - iRpgUnit – unit testing for RPG
 
-  https://github.com/tools-400/irpgunit
+  https://tools-400.github.io/irpgunit//update-site/eclipse/rdi8.0
   
 - Rapid-Fire – fast large database migration tool
 
-  https://github.com/rdi-open-source/rapid-fire
+  https://rdi-open-source.github.io/rapid-fire//update-site/eclipse/rdi8.0
 
 ### Solving remote system password problems
 
