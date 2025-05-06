@@ -91,13 +91,13 @@ site. Give it a meaningful name, and enter the following URL in the
 
 - IBM Rational Developer for i update site
 
-  https://public.dhe.ibm.com/ibmdl/export/pub/software/awdtools/rdi/v98/
+  [https://public.dhe.ibm.com/ibmdl/export/pub/software/awdtools/rdi/v98/](https://public.dhe.ibm.com/ibmdl/export/pub/software/awdtools/rdi/v98/)
   
 If you want information about the upfdates, just go to Fix Central:
 
 - IBM Fix List for RDi
 
-  https://www.ibm.com/support/pages/fix-list-rational-developer-i
+  [https://www.ibm.com/support/pages/fix-list-rational-developer-i](https://www.ibm.com/support/pages/fix-list-rational-developer-i)
   
 When this update site is selected, the RDi 9.8 updates should be presented. 
 Check the updates you want, click the „Next >“ button and follow the 
@@ -127,15 +127,15 @@ to an update site is configured in the previous paragraph.
 
 - iSphere – the RDi users „Swiss-army-knife“ plugin
 
-  https://rdi-open-source.github.io/isphere//update-site/eclipse/rdi8.0
+  [https://rdi-open-source.github.io/isphere//update-site/eclipse/rdi8.0](https://rdi-open-source.github.io/isphere//update-site/eclipse/rdi8.0)
   
 - iRpgUnit – unit testing for RPG
 
-  https://tools-400.github.io/irpgunit//update-site/eclipse/rdi8.0
+  [https://tools-400.github.io/irpgunit//update-site/eclipse/rdi8.0](https://tools-400.github.io/irpgunit//update-site/eclipse/rdi8.0)
   
 - Rapid-Fire – fast large database migration tool
 
-  https://rdi-open-source.github.io/rapid-fire//update-site/eclipse/rdi8.0
+  [https://rdi-open-source.github.io/rapid-fire//update-site/eclipse/rdi8.0](https://rdi-open-source.github.io/rapid-fire//update-site/eclipse/rdi8.0)
 
 ### Solving remote system password problems
 
@@ -179,7 +179,7 @@ Give the new site a meaningful name and enter the following URL in the
 
 - Eclipse 4.23 software repository
 
-  https://download.eclipse.org/releases/2022-03
+  [https://download.eclipse.org/releases/2022-03](https://download.eclipse.org/releases/2022-03)
 
 Use the search box to search for „Web Developer Tools“ and set a check mark 
 in front of „Eclipse Web Developer Tools“. Follow the installation after 
