@@ -133,7 +133,7 @@ Thanks for reading.
 
 #### More information / Links
 
-- https://www.ibm.com/docs/en/i/7.6.0?topic=sql-indicator-variables-used-assign-special-values
-- https://www.ibm.com/docs/en/i/7.6.0?topic=statements-open
-- https://www.ibm.com/docs/en/i/7.6.0?topic=statements-execute
+- [Info Center - SQL Indicator variable special values](https://www.ibm.com/docs/en/i/7.6.0?topic=sql-indicator-variables-used-assign-special-values)
+- [Info Center - `OPEN` Statement](https://www.ibm.com/docs/en/i/7.6.0?topic=statements-open)
+- [Info Center - `EXECUTE` Statement](https://www.ibm.com/docs/en/i/7.6.0?topic=statements-execute)
 
