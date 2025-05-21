@@ -9,8 +9,19 @@ With dynamic statements in SQLRPGLE you always have to be careful with user-inpu
 
 So since long, every SQL evangelist ist preaching to use SQL parameter markers - e.g. `?` - in dynamic SQL, and strictly avoid ebedding user entered strings into the SQL statements. The `?` markers later get their values, during execution of the SQL statements - and the values are **never** "embedded", but always entered typesafe. So the string `' or 1=1--` above will be entered as a value into the statement - and therefore treated as literal data, not as SQL code.
 
-Using this is quite easy:
+So witz this kind of code, you obviously can get into trouble:
+```rpgle
+  exec sql prepare stmDelete using 'DELETE FROM MYTABLE WHERE COL1 = '''+%trim(myVar)+'''';
+  exec sql execute stmDelete;
+```
 
+If `myVar` contains `' or true --` the SQL statement will evaluate to:
+```sql
+DELETE FROM MYTABLE WHERE COL1 = '' or true --'
+```
+And as everything behind the SQL comment `--` is ignored, all rows in `MYTABLE` will get deleted. 
+
+Avoiding this is kind of easy - simply use a `?` parameter marker, and g:
 ```rpgle
   exec sql prepare stmDelete using 'DELETE FROM MYTABLE WHERE COL1 = ?';
   exec sql execute stmDelete using :hostVar;
