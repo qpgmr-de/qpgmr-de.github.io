@@ -88,9 +88,6 @@ And now the "funny" part - you can mix host-variables with and without indicator
 - You have exactly the number of host-variables without `-7` indicator as you have `?` parameter markers
 - The sequence of the host-variables in the `USING SUBSET` clause is exactly matched to the sequence of the `?` parameter markers
 
-More information: 
-- https://www.ibm.com/docs/en/i/7.6.0?topic=statements-open
-
 
 #### But why of all things are you using `trim(cast(? as varchar(100)))`?
 
@@ -103,7 +100,8 @@ But there is a problem with that - you cannot code `TRIM(?)` in dynamic SQL dire
 Of course you can avoid that, if you simply use a host-variable of type `VARCHAR` with and already trimmed value in it. Instead of `trim(cast(? as varchar(100)))` you would then simply code `?`.
 
 Maybe IBM is fixing this in the future - but even when they do, it won't affect your statements, that still use `CAST`.
- 
+
+
 #### Is this only for `OPEN` statements?
  
 Short answer: No!
@@ -125,15 +123,17 @@ exec sql update mytable
          where mytable.id = :id
 ```
 
-More information: 
-- https://www.ibm.com/docs/en/i/7.6.0?topic=statements-execute
+
+#### Conclusion
+
+Avoiding SQL injections is not so hard using indicators in dynamic embedded SQL. You should really use this trick at least with all character/string inputs. 
+
+Thanks for reading.
+
+
+#### More information / Links
+
 - https://www.ibm.com/docs/en/i/7.6.0?topic=sql-indicator-variables-used-assign-special-values
- 
-#### SQL indicator values
- 
-| Wert | Bedeutung |
-|------|-----------|
-| `0`  | the "real" value of the host-variable should be used |
-| `-1`<br>`-2`<br>`-3`<br>`-4`<br>`-6` | <br><br>the `NULL` value is used, the value of the host-variable is ignored |
-| `-5` | the `DEFAULT` value of the column shoud be used (for `UPDATE` and `INSERT`) |
-| `-7` | the host-variable is "not assigned" - meaning "left out" |
+- https://www.ibm.com/docs/en/i/7.6.0?topic=statements-open
+- https://www.ibm.com/docs/en/i/7.6.0?topic=statements-execute
+
