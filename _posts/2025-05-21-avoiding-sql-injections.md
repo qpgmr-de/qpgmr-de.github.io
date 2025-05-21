@@ -91,13 +91,15 @@ More information:
  
 #### But why of all things are you using `trim(cast(? as varchar(100)))`?
 
-I'm using the somehow unneccessary complex `trim(cast(? as varchar(100)))` to insert the parameter marker. And you may ask why?
+I'm using the somehow unnecessarily complex `trim(cast(? as varchar(100)))` to insert the parameter marker. And you may ask why?
 
-The reason is simple - our variable `col2val` is supposed to be of type `CHAR(..)`, and we want to trim leading and trailing blanks from the value, to make our `LIKE` search.
+And the reason for this is simple - our variable `col2val` is supposed to be of type `CHAR(..)`, and we want to trim leading and trailing blanks from the value, to make our `LIKE` search.
 
-And the problem is, that you cannot code `trim(?)` in dynamic SQL directly. Due to an un-resolved error in dynamic SQL, some scalar functions don't accept `?` parameter markers directly - `TRIM` is one of them. So we are wrapping the `?` marker in a `CAST` and this avoids the problem.
+But there is a problem with that - you cannot code `TRIM(?)` in dynamic SQL directly. Due to an unresolved error in dynamic SQL, some scalar functions don't accept `?` parameter markers directly - and sadly `TRIM` is one of them. So we are wrapping the `?` marker in a `CAST` and this avoids the problem. 
 
-Maybe IBM is fixing this in the future - even when they do, it won't affect your statements, that still use `CAST`.
+Of course you can avoid that, if you simply use a host-variable of type `VARCHAR` with and already trimmed value in it. Instead of `trim(cast(? as varchar(100)))` you would then simply code `?`.
+
+Maybe IBM is fixing this in the future - but even when they do, it won't affect your statements, that still use `CAST`.
  
 #### Is this only for `OPEN` statements?
  
@@ -105,8 +107,24 @@ Short answer: No!
 
 Somehow longer answer: You can also code `UPDATE` and `INSERT` statements with a variable number of `?` parameter markers, as `EXECUTE` also supports the `USING SUBSET` clause.
 
+And you can even use the `-7` indicator in static SQL - here an example:
+```rpgle
+exec sql update mytable
+         set mytable.col1 = :col1val,
+             mytable.col2 = :col2val :col2ind
+         where mytable.id = :id
+```
+
+If the indicator `col2ind` is set to `-7`, the statement will be executed like this:
+```rpgle
+exec sql update mytable
+         set mytable.col1 = :col1val
+         where mytable.id = :id
+```
+
 More information: 
 - https://www.ibm.com/docs/en/i/7.6.0?topic=statements-execute
+- https://www.ibm.com/docs/en/i/7.6.0?topic=sql-indicator-variables-used-assign-special-values
  
 #### SQL indicator values
  
@@ -116,6 +134,3 @@ More information:
 | `-1`<br>`-2`<br>`-3`<br>`-4`<br>`-6` | <br><br>the `NULL` value is used, the value of the host-variable is ignored |
 | `-5` | the `DEFAULT` value of the column shoud be used (for `UPDATE` and `INSERT`) |
 | `-7` | the host-variable is "not assigned" - meaning "left out" |
- 
-More information: 
-- https://www.ibm.com/docs/en/i/7.6.0?topic=sql-indicator-variables-used-assign-special-values
