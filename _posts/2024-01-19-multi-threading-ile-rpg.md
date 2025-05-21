@@ -8,7 +8,7 @@ Lets break down the program in pieces - we start at the top:
 
 ```rpgle
 **free
-ctl-opt main(main) dftactgrp(*no) actgrp('ATHREAD');
+ctl-opt main(main) dftactgrp(*no) actgrp('ATHREAD') thread(*concurrent);
 ctl-opt datedit(*dmy/) option(*srcstmt:*nodebugio);
 
 /copy qsysinc/qrpglesrc,pthread        // PThread prototypes
@@ -22,6 +22,8 @@ end-ds;
 ```
 
 We use free-format RPG - of course - and some standard headers. In this example, I'm using a "linear" main procedure - no RPG cycle, no `*INLR` - and a named activation group. The APIs should work the same with a cycle main procedure or an activation group `*NEW` or even with `QILE` - but I always recommend not to use the QILE activation group.
+
+The keyword `thread(*concurrent)` tells the compiler, that it should create seperate static storage for each thread. The other option would be `thread(*serialize)` - so the whole modure would run serialized and not multi-threaded.
 
 We don't need special service programs or binder directories to use the pthreads APIs - but we include the system headers "pthread" (maybe obvious) and "unistd" (for the [`sleep()`](https://man7.org/linux/man-pages/man3/sleep.3.html) procedure) from `QSYSINC/QRPGLESRC`.
 
