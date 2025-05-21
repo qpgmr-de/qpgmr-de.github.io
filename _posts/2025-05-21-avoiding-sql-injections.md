@@ -58,16 +58,16 @@ selectStmt = 'SELECT MYTABLE.* +
               WHERE MYTABLE.COL1 = ?';
 
 if col2val <> *blank;
-  selectStmt += ' AND MYTABLE.COL2 LIKE ''%'' CONCAT TRIM(CAST(? AS VARCHAR(100))) CONCAT ''%''';
-  col2ind = *zero;
+  selectStmt += ' AND MYTABLE.COL2 LIKE ''%'' CONCAT TRIM(CAST(? AS VARCHAR(100))) CONCAT ''%''';
+  col2ind = *zero;
 else;
-  col2ind = -7;
+  col2ind = -7;
 endif;
 
 exec sql prepare stmSelect from :selectStmt;
 if sqlcode = *zero;
-  exec sql declare csrSelect for stmSelect;
-  exec sql open csrSelect using subset :col1val, :col2val :col2ind;
+  exec sql declare csrSelect cursor for stmSelect;
+  exec sql open csrSelect using subset :col1val, :col2val :col2ind;
 endif;
 ```
 
@@ -76,7 +76,6 @@ As you can see, the value of `col1val` and `col2val` are only used with the `OPE
 The magic is done by the clause `USING SUBSET`. Depending on the indicator `col2ind` for host-variable `col2val`, the `OPEN` statement gets executed in two different ways:
 
 - `col2ind` = 0 -> `open csrSelect using :col1val, :col2val`
-
 - `col2ind` = -7 -> `open csrSelect using :col1val`
 
 In the second case, the host-variable `col2val` in the `USING SUBSET` clause is completely ignored. Therefore also the second `?` marker shouldn't be present in the prepared statement.
