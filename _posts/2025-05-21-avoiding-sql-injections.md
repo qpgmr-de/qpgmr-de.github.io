@@ -3,6 +3,8 @@ tags: IBMi RPGLE SQL embeddedSQL
 ---
 ## Avoiding SQL injections in ILE-RPG with embedded SQL (SQLRPGLE)
 
+Even if many IBM i appications run in a very closed envorinment, SQL injections can be real threat. So let's explore some solutions, to avoid SQL injections in you code, without a lot of effort.
+
 ### The problem: user-input in dynamic SQL statements
 
 With dynamic statements in SQLRPGLE you always have to be careful with user-inputs. Users can enter malicious data like `' or 1=1--` - and if this code is "embedded" into a dynamic SQL statement, it can be harmful.
@@ -11,8 +13,8 @@ So since long, every SQL evangelist ist preaching to use SQL parameter markers -
 
 So with this kind of code, you obviously can get into trouble:
 ```rpgle
-  exec sql prepare stmDelete using 'DELETE FROM MYTABLE WHERE COL1 = '''+%trim(myVar)+'''';
-  exec sql execute stmDelete;
+exec sql prepare stmDelete using 'DELETE FROM MYTABLE WHERE COL1 = '''+%trim(myVar)+'''';
+exec sql execute stmDelete;
 ```
 
 If `myVar` contains `' or true --` the SQL statement will evaluate to:
@@ -25,11 +27,12 @@ One solution might be, to search for "*forbidden*" characters like `'` oder stri
 
 The real solution is, to avoid embedding strings and simply use `?` parameter markers, instead of appending strings into the statement - like this:
 ```rpgle
-  exec sql prepare stmDelete using 'DELETE FROM MYTABLE WHERE COL1 = ?';
-  exec sql execute stmDelete using :hostVar;
+exec sql prepare stmDelete using 'DELETE FROM MYTABLE WHERE COL1 = ?';
+exec sql execute stmDelete using :hostVar;
 ```
 
 The `?` markers in the statement get their values during the `EXECUTE` or `OPEN` (for cursors) statement. During the execution the values are "insertet" in a typesafe way, and the are **never** "embedded" into the statement. So even a value like `' or 1=1--` will be entered as a **value** into the statement - and therefore treated as literal data, not as SQL code.
+
 
 #### Really dynamic SQL statements
 
@@ -87,7 +90,8 @@ And now the "funny" part - you can mix host-variables with and without indicator
 
 More information: 
 - https://www.ibm.com/docs/en/i/7.6.0?topic=statements-open
- 
+
+
 #### But why of all things are you using `trim(cast(? as varchar(100)))`?
 
 I'm using the somehow unnecessarily complex `trim(cast(? as varchar(100)))` to insert the parameter marker. And you may ask why?
