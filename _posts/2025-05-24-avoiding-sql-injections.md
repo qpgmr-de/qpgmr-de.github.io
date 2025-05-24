@@ -1,5 +1,5 @@
 ---
-tags: IBMi RPGLE SQL embeddedSQL
+tags: IBMi RPGLE SQL SQLRPGLE embeddedSQL
 ---
 ## Avoiding SQL injections in ILE-RPG with embedded SQL (SQLRPGLE)
 
