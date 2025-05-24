@@ -3,7 +3,9 @@ tags: IBMi RPGLE SQL SQLRPGLE embeddedSQL
 ---
 ## Avoiding SQL injections in ILE-RPG with embedded SQL (SQLRPGLE)
 
-Even if many IBM i appications run in a very closed envorinment, SQL injections can be real threat. So let's explore some solutions, to avoid SQL injections in you code, without a lot of effort.
+Dynamic embedded SQL is a great tool, if you have to create your SQL statements depending on user input. But "inserting" those user inputs directly into your SQL statement string, can be very dangerous. This kind of attack is called SQL injection.
+
+Even if many IBM i appications run in a very closed envorinment, [SQL injections can be real threat](https://xkcd.com/327/). So in this post, we explore a clever combination of SQL parameter markers and SQL indicators, that can help you to create injection-safe dynamic SQL statements.
 
 ### The problem: user-input in dynamic SQL statements
 
@@ -102,13 +104,12 @@ Of course you can avoid that, if you simply use a host-variable of type `VARCHAR
 Maybe IBM is fixing this in the future - but even when they do, it won't affect your statements, that still use `CAST`.
 
 
-#### Is this only for `OPEN` statements?
+#### Is this only for `OPEN` statements and dynamic SQL?
  
 Short answer: No!
 
-Somehow longer answer: You can also code `UPDATE` and `INSERT` statements with a variable number of `?` parameter markers, as `EXECUTE` also supports the `USING SUBSET` clause.
+Somehow longer answer: You can also code `UPDATE` and `INSERT` statements with a variable number of `?` parameter markers, as `EXECUTE` also supports the `USING SUBSET` clause. And you can even use the `-7` indicator in static SQL - here an example:
 
-And you can even use the `-7` indicator in static SQL - here an example:
 ```rpgle
 exec sql update mytable
          set mytable.col1 = :col1val,
