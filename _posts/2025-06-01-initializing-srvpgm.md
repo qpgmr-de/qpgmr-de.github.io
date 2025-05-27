@@ -82,9 +82,9 @@ export out of the binder language source - but since it has be called by the C++
 the service program, it still has to be flagged as `export` in the RPG source code.
 
 The [page in IBM i Info Center](https://www.ibm.com/support/pages/initializing-context-during-service-program-activation)
-is recommending that you only create the module once, and always you the same name for the
-init procedure. But I prefer to have a separate module for each service program, as I also 
-like to prefix the procedure names of my service programs.
+is recommending that you only create the module only once, and always use the same module and
+the same procedure name for the init procedure in RPG. But I prefer to have a separate module
+for each service program, as I also like to prefix the procedure names of my service programs.
 
 At this point you are free to stop reading - in fact, up until now, I haven't written anything,
 that you cannot read on the [page in IBM i Info Center](https://www.ibm.com/support/pages/initializing-context-during-service-program-activation).
