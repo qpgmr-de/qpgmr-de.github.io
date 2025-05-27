@@ -5,8 +5,7 @@ But calling an initialization procedure in each program, in each of the programs
 that uses the service program, is somehow inconvenient.
 
 Sadly, the is no mechanism in ILE-RPG that helps with automatically running a procedure
-when the service program is loaded. But lately I stumbled over a ["gem" in IBM i Info Center]
-(https://www.ibm.com/support/pages/initializing-context-during-service-program-activation)
+when the service program is loaded. But lately I stumbled over a ["gem" in IBM i Info Center](https://www.ibm.com/support/pages/initializing-context-during-service-program-activation)
 that describes a way, to create exactly that - and the hero in this tale is: C++
 
 ### The problem
@@ -88,8 +87,7 @@ init procedure. But I prefer to have a separate module for each service program,
 like to prefix the procedure names of my service programs.
 
 At this point you are free to stop reading - in fact, up until now, I haven't written anything,
-that you cannot read on the [page in IBM i Info Center]
-(https://www.ibm.com/support/pages/initializing-context-during-service-program-activation).
+that you cannot read on the [page in IBM i Info Center](https://www.ibm.com/support/pages/initializing-context-during-service-program-activation).
 But in the next chapter, I will at least try to explain, why or how this mechanism works.
 
 ### The explanation
