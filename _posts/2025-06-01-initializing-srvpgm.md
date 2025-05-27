@@ -35,25 +35,25 @@ dcl-proc doSomething export;
 end-proc;
 ```
 
-Let's assume the `initSrvpgm` procedure is initializing some global variables or is setting up
-something in QTEMP. Or you want to register an activation group exit procedure with the 
+Let's assume the `initSrvpgm` procedure is initializing some global variables, is setting up
+something in QTEMP or is registering an activation group exit procedure with the 
 [`CEE4RAGE2`](https://www.ibm.com/docs/api/v1/content/ssw_ibm_i_76/apis/CEE4RAGE2.htm) API.
 
-Now you would have to call `initSrvpgm()` in each of your programs that use the service program.
-And you have to call it exactly **once** - because in our example, you only want to register the
+Now you would have to call `initSrvpgm()` in each program that uses your service program. And 
+you would have to call it exactly **once** - because in our example, you only want to register the
 activation group exit procedure once, as it only should run exactly once, when the activation
 group ends.
 
-This is rather inconvenient and if the developer forgets about it, the initialization isn't done.
-Or maybe worse - it's done twice.
+This is rather inconvenient and also error prone. If the developer forgets about it, the
+initialization isn't done - or maybe worse, it's done twice.
 
 ### The solution
 
 We need some code, that is automatically executed, when the service program is loaded and 
-activated. But sadly neither ILE-RPG, ILE-COBOL, ILE-CL or ILE-C have no mechanism or construct
+activated. But sadly neither ILE-RPG, ILE-COBOL, ILE-CL nor ILE-C have a mechanism or construct
 to do that.
 
-But there is another member of the ILE language family, that can do exactly this: **ILE-C++**
+But there is another ILE family member that can do exactly this: **ILE-C++**
 
 ```cpp
 extern "C" void initSrvpgm(void);
@@ -68,17 +68,15 @@ class InitSrvpgmClass {
 InitSrvpgmClass dummy;
 ```
 
-This code should be in member of type `cpp` (or a source stream file with `.cpp` extension).
+This code should be in a member of type `CPP` (or an IFS source file with `.cpp` extension).
 
-You would compile the member with the `CRTCPPMOD` command to a module. And then bind both
-modules with `CRTSRVPGM` to a service program.
-
-And if a program that is linked to the service program is loaded, the service program gets 
-loaded - and like *auto-magically* the `initSrvpgm` procedure gets called, without a direct
-call.
+You would compile it with the `CRTCPPMOD` command to a module. And then bind both the ILE-RPG
+and the ILE-C++ module with `CRTSRVPGM` to a service program. And if a program that is linked 
+to the service program is loaded, the service program also gets loaded - and like 
+*auto-magically* the `initSrvpgm` procedure gets called.
 
 You can even hide the `initSrvpgm` procedure from being called by someone else, by leaving the
-export out of the binder language source - but since it has be called by the C++ module inside
+export out of the binder language source. But since it has to be called by the C++ module inside
 the service program, it still has to be flagged as `export` in the RPG source code.
 
 The [page in IBM i Info Center](https://www.ibm.com/support/pages/initializing-context-during-service-program-activation)
