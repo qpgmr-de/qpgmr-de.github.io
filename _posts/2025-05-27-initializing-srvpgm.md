@@ -13,7 +13,7 @@ that describes a way, to create exactly that - and the hero in this tale is: C++
 
 Here is the source code of a small service program. 
 
-```rpgle {.line-numbers}
+```rpgle
 **free
 ctl-opt nomain;
 
@@ -56,7 +56,7 @@ to do that.
 
 But there is another member of the ILE language family, that can do exactly this: **ILE-C++**
 
-```cpp {.line-numbers}
+```cpp
 extern "C" void initSrvpgm(void);
 
 class InitSrvpgmClass {                    
@@ -96,7 +96,7 @@ But in the next chapter, I will at least try to explain, why or how this mechani
 
 No let`s go through the C++ code, to find out, what happens.
 
-```cpp {.line-numbers}
+```cpp
 extern "C" void initSrvpgm(void);
 ```
 
@@ -108,7 +108,7 @@ Without the `extproc(*dclcase)` keyword, the prototyp would have to be `INITSRVP
 is normally exporting every procedure in UPPERCASE. But I like camelCase - not only in my 
 source code - also as the exported procedure name.
 
-```cpp {.line-numbers}
+```cpp
 class InitSrvpgmClass {                    
   public:                              
     InitSrvpgmClass() {      
@@ -126,7 +126,7 @@ gets called, when a new instance of our class - meaning a new variable of that t
 A constructor method must always have the same name - including matching case - as the class
 itself - because your know ... C++ is a case-sensitive language.
 
-```cpp {.line-numbers}
+```cpp
 InitSrvpgmClass dummy;
 ```
 
