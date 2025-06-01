@@ -140,10 +140,10 @@ This is simply a module global variable definition. In C++ you can declare varia
 outside of your functions - and exaclty like ILE-RPG those variables are global to the 
 module. And those variables are "initialized" at the moment, the module is loaded.
 
-And here the *trick* - as we defined a class constructor, that code is executed in the very 
-moment, where the variable is initialized - ... when the module is loaded. And because our
-constructor is calling our ILE-RPG procedure `initSrvpgm()`, our ILE-RPG code is also
-executed - ... when the (C++) module is loaded.
+And here the *trick* - as we defined a class constructor, that constructor code is executed 
+in the very moment, where the variable is initialized - *... when the module is loaded*. 
+And because our constructor is calling our ILE-RPG procedure `initSrvpgm()`, our ILE-RPG code 
+is also executed - *... when the (C++) module is loaded*.
 
 So that *Kind of Magic* is simply an object-oriented feature of C++, which we are 
 *exploiting shamelessly* for our own advantage.
