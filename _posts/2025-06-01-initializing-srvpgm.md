@@ -1,8 +1,8 @@
 ## Automatically initializing ILE-RPG service programs
 
 Sometimes your service program needs some initialization before it is able to run. 
-But calling an initialization procedure in each program, in each of the programs,
-that uses the service program, is somehow inconvenient.
+But calling an initialization procedure in each of the programs, that uses the 
+service program, is somehow inconvenient.
 
 Sadly, the is no mechanism in ILE-RPG that helps with automatically running a procedure
 when the service program is loaded. But lately I stumbled over a ["gem" in IBM i Info Center](https://www.ibm.com/support/pages/initializing-context-during-service-program-activation)
