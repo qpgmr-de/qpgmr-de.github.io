@@ -142,6 +142,8 @@ As long, as your initialization doesn't need any parameters from the calling pro
 technique is quite useful, and you will never have to think about calling your initializer.
 
 I hope you found our little *excursion* into C++ and object-orientation entertaning and 
-easy to follow. 
+easy to follow.
 
+If you want to discuss, leave a comment or send me a message, please open an 
+[issue](https://github.com/qpgmr-de/qpgmr-de.github.io/issues).
 
