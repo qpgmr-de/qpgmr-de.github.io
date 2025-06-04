@@ -185,4 +185,4 @@ So I hope you found our little *excursion* into C++ and object-orientation enter
 easy to follow.
 
 If you want to discuss, leave a comment or send me a message, please open an 
-[issue](https://github.com/qpgmr-de/qpgmr-de.github.io/issues).
+[issue](https://github.com/qpgmr-de/qpgmr-de.github.io/discussions)).
