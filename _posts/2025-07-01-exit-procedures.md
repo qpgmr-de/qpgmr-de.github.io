@@ -184,5 +184,5 @@ technique is quite useful, and you will never have to think about calling your i
 So I hope you found our little *excursion* into C++ and object-orientation entertaning and 
 easy to follow.
 
-If you want to discuss, leave a comment or send me a message, please open an 
-[issue](https://github.com/qpgmr-de/qpgmr-de.github.io/discussions)).
+If you have questions or ideas - I have opened the [Discussions](https://github.com/qpgmr-de/qpgmr-de.github.io/discussions)
+page of this repository - if you like, leave a comment.
