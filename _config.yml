@@ -27,9 +27,9 @@ show_excerpts: true
 minima:
   date_format: "%Y-%02m-%02d"
 
-header_pages:
+#header_pages:
 # - resume.md
-  - computer-history.md
+# - computer-history.md
 # - portfolio.md
 # - [Discussions](https://github.com/qpgmr-de/qpgmr-de.github.io/issues)
 
