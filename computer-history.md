@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Computer History
+title: My Computer History
 ---
 ## My personal computer history
 
