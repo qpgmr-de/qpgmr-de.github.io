@@ -1,3 +1,3 @@
-## QPGMR blog
+## Home
 
 About IBM i, SQL, RPG and anything else ...
