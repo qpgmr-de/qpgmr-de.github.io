@@ -131,9 +131,8 @@ Avoiding SQL injections is not so hard using indicators in dynamic embedded SQL.
 
 Thanks for reading.
 
-If you want to discuss, leave a comment or send me a message, please open an 
-[issue](https://github.com/qpgmr-de/qpgmr-de.github.io/issues).
-
+If you have questions or ideas - I have opened the [Discussions](https://github.com/qpgmr-de/qpgmr-de.github.io/issues)
+page of this repository - if you like, leave a comment.
 
 #### More information / Links
 
