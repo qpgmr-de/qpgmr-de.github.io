@@ -98,7 +98,7 @@ You can also un-register the exit handler, using the
 [`CEEUTX`](https://www.ibm.com/docs/en/i/7.6.0?topic=ssw_ibm_i_76/apis/CEEUTX.html) API.
 Here is the prototype:
 
-```rpgle
+```rpgle **free
 // API prototype Unregister Exit Procedure
 dcl-pr ceeutx extproc('CEEUTX');
   *n pointer(*proc) const;
