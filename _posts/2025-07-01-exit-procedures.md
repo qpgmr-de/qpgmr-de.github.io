@@ -14,6 +14,8 @@ whenever (!) your procedure ends - whether it's normal (by using return) or abno
 Here we have a small example:
 
 ```rpgle
+**free
+
 dcl-proc myProcedure;
   dcl-pi *n ind;
   end-pi;
