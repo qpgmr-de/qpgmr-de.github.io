@@ -133,7 +133,7 @@ ends, where the service program is loaded. There are also APIs for this case:
 - [`CEE4RAGEL`](https://www.ibm.com/docs/api/v1/content/ssw_ibm_i_76/apis/cee4ragel.htm)
   Register Activation Group Exit Last Procedure (with a 64 bit mark)
 
-The difference between `CEE4RAGE` and `CEE4RAGEL` is simply, that the former is calling 
+The difference between `CEE4RAGE` and `CEE4RAGE2` is simply, that the former is calling 
 the exit procedure with a 32 bit activation group marker, wheras the latter is calling
 your exit procedure with a 64 bit activation group marker. I think it's safe to say,
 that you can use the 64 bit version in every case.
