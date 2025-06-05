@@ -101,6 +101,7 @@ You can also un-register the exit handler, using the
 Here is the prototype:
 
 ```rpgle
+**free
 // API prototype Unregister Exit Procedure
 dcl-pr ceeutx extproc('CEEUTX');
   *n pointer(*proc) const;
