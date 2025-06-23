@@ -3,16 +3,21 @@
 Sometimes you want to run a procedure to clean up behind yourself. 
 Whether its a program or procedure - or maybe a service program.
 
-I want to discuss the available options with you - every option has 
+I want to discuss the available options with you - every option has it's advantage and it's own use case. 
+So let's dive in.
 
 ### Running an exit routine after your procedure
 
-Since some time, ILE-RPG has the statement [`ON-EXIT`](https://www.ibm.com/docs/en/i/7.6.0?topic=codes-exit-exit). 
-It creates some sort of "sub-procedure" inside your procedure - and this "sub-procedure" is executed
+If you only want to have a procedure, after which you want to clean up, there is the RPG keyword/statement 
+[`ON-EXIT`](https://www.ibm.com/docs/en/i/7.6.0?topic=codes-exit-exit). 
+
+In [2016 ILE-RPG was extended](http://ibm.biz/RPG_ON_EXIT_Section) with the [`ON-EXIT`](https://www.ibm.com/docs/en/i/7.6.0?topic=codes-exit-exit)
+keyword/statement. It creates some sort of "sub-procedure" inside your procedure - and this "sub-procedure" is executed
 whenever (!) your procedure ends - whether it's normal (by using return) or abnormal (by an exception).
 
-Here we have a small example:
+Even when the job, in which your procedure runs, is ended with `*IMMED` the `ON-EXIT` section is still executed.
 
+A small example:
 ```rpgle
 **free
 
@@ -46,14 +51,21 @@ An interesting option is, that you can return an other value, that the original 
 don't code a `RETURN` in `ON-EXIT` or if that `RETURN` is conditioned (like in our example) the
 `ON-EXIT` "sub-procedure" returns the otiginal return value.
 
-The `ON-EXIT` opcode is only available for "linear" procedures. So `ON-EXIT` is no option, if you
+`ON-EXIT` is by far the easiest and most straight-forward solution, to clean up after yourself.
+But the `ON-EXIT` opcode is only available for "linear" procedures. So `ON-EXIT` is no option, if you
 use a "cycle" main procedure. But for this case, you have the next option.
+
+`ON-EXIT` is also no solution if there is a time differnce between the end of your procedure, and
+the clean-up. Like when you have a process consisting of several calls, and you want to make sure,
+that finally your clean-up procedure gets called, no matter what happens.
 
 
 ### Running an exit procedure when a call stack entry ends
 
 If you want to run an exit procedure after a program or procedure ends, you can easily register an
 exit procedure with the [`CEERTX`](https://www.ibm.com/docs/en/i/7.6.0?topic=ssw_ibm_i_76/apis/CEERTX.html) API.
+
+Other than `ON-EXIT` this works also for "cycle" main procedures.
 
 Here is a small example:
 
