@@ -1,14 +1,14 @@
 ## Running "automatic" exit-procedures
 
-Sometimes you want to run a procedure to clean up behind yourself. 
-Whether its a program or procedure - or maybe a service program.
+Sometimes you want to run some code to clean up behind yourself - if an exception occured or after a successful end. 
+Whether its a program or procedure - or even a service program, which gets *unloaded* when its activation group ends.
 
 I want to discuss the available options with you - every option has it's advantage and it's own use case. 
 So let's dive in.
 
 ### Running an exit routine after your procedure
 
-If you only want to have a procedure, after which you want to clean up, there is the RPG keyword/statement 
+If you only want to have some code to run in any case after your procedure ends there is the RPG keyword/statement 
 [`ON-EXIT`](https://www.ibm.com/docs/en/i/7.6.0?topic=codes-exit-exit). 
 
 In [2016 ILE-RPG was extended](http://ibm.biz/RPG_ON_EXIT_Section) with the [`ON-EXIT`](https://www.ibm.com/docs/en/i/7.6.0?topic=codes-exit-exit)
@@ -43,7 +43,12 @@ end-proc;
 So whenever this procedure ends, the `ON-EXIT` block is executed. If the procedure is ending abnormal - 
 i.e. due to an exception - the flag `isAbnormalEnd` in `*ON`.
 
-Inside the `ON-EXIT` you have several options. You get the name of the "original" procedure with 
+If you want to test the abnormal end, add the following line of code **before** the `return *on` and try it:
+```rpgle
+  snd-msg *escape 'This is an exception in procedure '+%proc()+' ...' %target(*self);
+```
+
+Inside the `ON-EXIT` sub-procedure you have several options. You get the name of the "original" procedure with 
 `%PROC(*OWNER)`. Whereas `%PROC(*ONEXIT)` is returning the name of the `ON-EXIT` "sub-procedure" - 
 in our case that would be `_QRNI_ON_EXIT_myProcedure`.
 
