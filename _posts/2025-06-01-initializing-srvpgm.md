@@ -13,7 +13,7 @@ that describes a way, to create exactly that - and the hero in this tale is: C++
 
 Here is the source code of a small service program. 
 
-```rpgle
+```rpg
 **free
 ctl-opt nomain;
 
