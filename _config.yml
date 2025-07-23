@@ -44,7 +44,9 @@ kramdown:
   syntax_highlighter_opts:
     disable: false
 #   disable: true
-    
+
+highlighter: rouge
+
 plugins:
   - jekyll-feed
   - jekyll-sitemap
