@@ -40,12 +40,11 @@ theme: "minima"
 
 rss: rss
 
-kramdown:
-  syntax_highlighter_opts:
-    disable: false
+#kramdown:
+#  syntax_highlighter_opts:
+#    disable: false
 #   disable: true
-
-highlighter: rouge
+#highlighter: rouge
 
 plugins:
   - jekyll-feed
