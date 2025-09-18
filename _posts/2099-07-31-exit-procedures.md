@@ -1,28 +1,26 @@
 ## Running "automatic" exit-procedures
 
-Sometimes you want to run some code to clean up behind yourself - if an exception occured or after a successful end. 
-Whether its a program or procedure - or even a service program, which gets *unloaded* when its activation group ends.
+Cleaning up behind you is important - nobody wants to leave a mess when a procedure, program, service program or
+job ends - even if your program ends "unplaned" or a job is ended "furcefully". 
 
 I want to discuss the available options with you - every option has it's advantage and it's own use case. 
-So let's dive in.
 
-### Running an exit routine after your procedure
+So let's dive in - from the easiest to the most complex and trickiest.
 
-If you only want to have some code to run in any case after your procedure ends there is the RPG keyword/statement 
-[`ON-EXIT`](https://www.ibm.com/docs/en/i/7.6.0?topic=codes-exit-exit). 
+### Running an exit routine after your procedure with `ON-EXIT`
 
 In [2016 ILE-RPG was extended](http://ibm.biz/RPG_ON_EXIT_Section) with the [`ON-EXIT`](https://www.ibm.com/docs/en/i/7.6.0?topic=codes-exit-exit)
-keyword/statement. It creates some sort of "sub-procedure" inside your procedure - and this "sub-procedure" is executed
-whenever (!) your procedure ends - whether it's normal (by using return) or abnormal (by an exception).
+keyword/statement. It creates a "sub-procedure" inside your own procedure - and this "sub-procedure" is executed
+whenever (!) your procedure ends - whether it's a normal end (by using return) or an abnormal end (by an exception).
 
-Even when the job, in which your procedure runs, is ended with `*IMMED` the `ON-EXIT` section is still executed.
+Even when the job, in which your procedure runs, is ended with `*IMMED` the `ON-EXIT` section will still be executed.
 
-A small example:
+Here a small example to see how easy this is:
 ```rpgle
 **free
 
 dcl-proc myProcedure;
-  dcl-pi *n ind;
+  dcl-pi *n ind extproc(*dclcase);
   end-pi;
 
   dcl-s isAbnormalEnd ind inz;
@@ -41,7 +39,7 @@ end-proc;
 ```
 
 So whenever this procedure ends, the `ON-EXIT` block is executed. If the procedure is ending abnormal - 
-i.e. due to an exception - the flag `isAbnormalEnd` in `*ON`.
+i.e. due to an exception - the flag `isAbnormalEnd` in set to `*ON`.
 
 If you want to test the abnormal end, add the following line of code **before** the `return *on` and try it:
 ```rpgle
@@ -52,9 +50,9 @@ Inside the `ON-EXIT` sub-procedure you have several options. You get the name of
 `%PROC(*OWNER)`. Whereas `%PROC(*ONEXIT)` is returning the name of the `ON-EXIT` "sub-procedure" - 
 in our case that would be `_QRNI_ON_EXIT_myProcedure`.
 
-An interesting option is, that you can return an other value, that the original procedure. If you
-don't code a `RETURN` in `ON-EXIT` or if that `RETURN` is conditioned (like in our example) the
-`ON-EXIT` "sub-procedure" returns the otiginal return value.
+An interesting option is, that from inside the `ON-EXIT` sub-procedure, you can return an other return value, 
+than that of the original procedure. If you don't code a `RETURN` in `ON-EXIT` or if that `RETURN` is conditioned
+(like in our example) the original return value is returned.
 
 `ON-EXIT` is by far the easiest and most straight-forward solution, to clean up after yourself.
 But the `ON-EXIT` opcode is only available for "linear" procedures. So `ON-EXIT` is no option, if you
@@ -65,7 +63,7 @@ the clean-up. Like when you have a process consisting of several calls, and you 
 that finally your clean-up procedure gets called, no matter what happens.
 
 
-### Running an exit procedure when a call stack entry ends
+### Running an exit procedure when a call stack entry ends with the `CEERTX` API
 
 If you want to run an exit procedure after a program or procedure ends, you can easily register an
 exit procedure with the [`CEERTX`](https://www.ibm.com/docs/en/i/7.6.0?topic=ssw_ibm_i_76/apis/CEERTX.html) API.
@@ -108,12 +106,19 @@ First we have to create a prototype for the
 [`CEERTX`](https://www.ibm.com/docs/en/i/7.6.0?topic=ssw_ibm_i_76/apis/CEERTX.html) API.
 Basically the API has 3 parameters. 
 
-The 1st is a procedure pointer to your "exit handler"
-procedure - the procedure, that should run, when the program (or exactly the call stack
-entry) is ending. The other 2 parameters can be omitted - and discussing them is a
-story for another day.
+The 1st is a procedure pointer to your "exit handler" procedure - this is the procedure, 
+that should run, when the program (or exactly the call stack entry) is ending. 
 
-You can also un-register the exit handler, using the 
+The 2nd parameter can be omitted - if not, it should be a pointer to a variable or data
+structure which is passed as a parameter to the exit handler procedure. You can store every
+kind of "state information" that you might want to pass to the exit handler. But it can only
+be exactly 1 pointer.
+
+The 3rd parameter would be the typical API feedback data structure (`QUSEC`) - if it's 
+ommitted and the API call fails, the caller receives an exception message.
+
+If you don't want the exit handler to run - maybe because your program ended successfully -
+you can also un-register the exit handler, using the 
 [`CEEUTX`](https://www.ibm.com/docs/en/i/7.6.0?topic=ssw_ibm_i_76/apis/CEEUTX.html) API.
 Here is the prototype:
 
@@ -126,19 +131,20 @@ dcl-pr ceeutx extproc('CEEUTX');
 end-pr;
 ```
 
-As an example, you register your exit handler for the case an error occurs. And in case
-your program ends normally, you un-register it again, before the program ends. 
+The API has only 2 parameters - the pointer to the exit handler procedure and the API
+feedback data structure (`QUSEC`) which is ommitable.
 
 But this works only with programs or procedures - what if you want an exit procedure
 in the case your activation group ends? 
 
 
-### Running an exit procedure when an activation group ends
+### Running an exit procedure when an activation group ends with `CEE4RAGE2`
 
 If you want to register an exit procedure from a service program, the other options don't
 have the effect, that you need. The `ON-EXIT` works only for a single procedure. And
 as a service program doesn't have a "main procedure" you can't register a call stack entry
-exit procedure with `CEERTX`.
+exit procedure with `CEERTX`. Or better, you can, but it will run when the procedure, that
+has registered the exit handler, ends.
 
 So an exit procedure for a service program should probably run when the activation group
 ends, where the service program is loaded. There are also APIs for this case:
@@ -153,11 +159,12 @@ ends, where the service program is loaded. There are also APIs for this case:
 The difference between `CEE4RAGE` and `CEE4RAGE2` is simply, that the former is calling 
 the exit procedure with a 32 bit activation group marker, wheras the latter is calling
 your exit procedure with a 64 bit activation group marker. I think it's safe to say,
-that you can use the 64 bit version in every case.
+that you can use the 64 bit version in every case, and that `CEE4RAGE` is no longer
+recommended.
 
-The `CEE4RAGEL` API has the special function, that a exit procedure registered with it
-will always be called as the last exit procedure. Whereas the other exit procedures
-are called in "LIFO" order - the last registiered procedure gets called first.
+The `CEE4RAGEL` API on the other side has the special function, that a exit procedure 
+registered with it will always be called as the last exit procedure. Whereas the other 
+exit procedures are called in "LIFO" order - the last registiered procedure gets called first.
 
 Here an example for the calling sequence:
 
@@ -265,6 +272,13 @@ first parameter would also be of type `uns(10)` as it uses the 32-bit activation
 So as I already wrote, it's quite safe to ignore `CEE4RAGE` and always use `CEE4RAGE2` and
 `CEE4RAGEL` instead.
 
+
+### Running an exit program when a job ends with `QMHSNDSC`
+
+Until now we used RPG language constructs or API to "define" or "register" our exit handlers. 
+But those techniques to not work, if you want an exit handler, that runs when an job is ending.
+
+To get this working, you have to send a "scope message" to a handling program.
 
 
 
