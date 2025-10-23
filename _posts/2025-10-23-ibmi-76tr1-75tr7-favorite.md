@@ -56,5 +56,7 @@ have one line per column/value pair.
 ### Finally
 
 So what do you think about the new syntax? Yes, I know, it's not SQL standard (at the moment)
-but it's really so much better. And I really hope, that the SQL standard is adopting this 
-syntax soon.
+but it's really so much better to read. And I really hope, that the SQL standard is adopting 
+this syntax soon. 
+
+Will you adopt it?
