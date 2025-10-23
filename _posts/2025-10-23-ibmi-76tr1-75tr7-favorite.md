@@ -3,22 +3,24 @@
 As the anouncement is out some days, a lot was written about the next Technology Refreshes 
 for IBM i version 7.6 (TR1) and version 7.5 (TR7).
 
+- [IBM i 7.6 Technology Refresh 1](https://www.ibm.com/docs/en/announcements/adds-new-capabilities-enhancements-i-76-technology-refresh-1)
+- [IBM i 7.5 Technology Refresh 7](https://www.ibm.com/docs/en/announcements/adds-new-capabilities-enhancements-i-75-technology-refresh-7)
+
 As always the TRs are packed with new features, but I want to highlight one, that is my personal
 favorite. 
 
 ### Named columns for the SQL `INSERT` statement
 
 We all know the SQL `INSERT` statement to create new rows in a table. The traditional and 
-standard syntax is:
+standard syntax is which looks familiar since 1992:
 
   ```sql
   INSERT INTO mytable (column1, column2, column3)
   VALUES ('Value 1', 2, 'Value 3');
   ```
 
-This looks very familiar since 1992.
-
-But the new TRs are adding a new - and AFAIK exclusive to Db2 for i - syntax:
+But the new TRs are adding a new - and AFAIK exclusive to Db2 for i - syntax, 
+using *[named columns](https://www.ibm.com/docs/en/i/7.6.0?topic=statement-inserting-rows-using-values-clause)*:
 
   ```sql
   INSERT INTO mytable
