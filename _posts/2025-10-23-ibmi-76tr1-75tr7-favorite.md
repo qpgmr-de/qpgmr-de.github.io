@@ -23,8 +23,7 @@ But the new TRs are adding a new - and AFAIK exclusive to Db2 for i - syntax,
 using *[named columns](https://www.ibm.com/docs/en/i/7.6.0?topic=statement-inserting-rows-using-values-clause)*:
 
   ```sql
-  INSERT INTO mytable
-  VALUES (
+  INSERT INTO mytable VALUES (
     column1 => 'Value 1',
     column2 => 2,
     column3 => 'Value 3'
@@ -43,8 +42,7 @@ easier to maintain, as you simply can add one line for a new column, instead of 
 the column list and the value list. 
 
   ```rpgle
-  EXEC SQL INSERT INTO mytable
-           VALUES (
+  EXEC SQL INSERT INTO mytable VALUES (
              column1 => 'Value 1',
              column2 => 2,
              column3 => 'Value 3',
