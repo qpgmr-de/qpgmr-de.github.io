@@ -14,7 +14,7 @@ have a look at this, let's look at the syntax of the `INSERT` statement as we kn
 
 ### The *traditional* `INSERT` statement syntax
 
-The SQL `INSERT` statements perpose is to create new rows in a table. The traditional and standard 
+The SQL `INSERT` statements purpose is to create new rows in a table. The traditional and standard 
 syntax is which looks familiar since 1992:
 
 ```sql
@@ -23,7 +23,7 @@ values ('Value 1', 2, 'Value 3');
 ```
 
 If you don't want to supply values for every column of the table, you list the table columns in
-parentheses and the values in `VALUES` clause - exactly in the corrent order. 
+parentheses and the values in `VALUES` clause - exactly in the same order. 
 
 If you have lot of columns and a lot of values, this is a common source for errors. And here
 the new syntax, that is introduced with the new TRs, will be a huge improvement.
