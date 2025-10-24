@@ -1,4 +1,4 @@
-## Running "automatic" exit-procedures
+## Running "automatic" exit procedures
 
 Cleaning up behind you is important - nobody wants to leave a mess when a procedure, program, service program or
 job ends - even if your program ends "unplaned" or a job is ended "furcefully". 
@@ -68,7 +68,7 @@ that finally your clean-up procedure gets called, no matter what happens.
 If you want to run an exit procedure after a program or procedure ends, you can easily register an
 exit procedure with the [`CEERTX`](https://www.ibm.com/docs/en/i/7.6.0?topic=ssw_ibm_i_76/apis/CEERTX.html) API.
 
-Other than `ON-EXIT` this works also for "cycle" main procedures.
+Other than `ON-EXIT` this works also for old/traditional "cycle" main procedures (that kind where you do `*INLR = *ON`).
 
 Here is a small example:
 
