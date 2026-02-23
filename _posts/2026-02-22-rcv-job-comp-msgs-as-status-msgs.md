@@ -4,19 +4,21 @@ When you are developing on IBM i you can do your compiles interactively - at the
 
 You can opt to make your compiles in batch - so your session is free to do other work. And when the compiled finnishes, it will send you a message whether the compiler job finished successfully or not.
 
-Now you can set your message queue to `*BREAK` - which means, that your session will get interupted and the message appears on the screen. Nice, you know in real time that the compiler weas successful - but you were interrupted. OK set your message queue to `*NOTIFY` - you will see a small `MW` at the bottom of your session, when the compiler was finished - but your dont see, if if was successful or not.
+Now you can set your message queue to `*BREAK` - which means, that your session will get interupted and the message appears on the screen. Nice, you know in real time that the compiler weas successful - but you were interrupted. OK set your message queue to `*NOTIFY` - you will see a small `MW` (for Message Waiting) at the bottom of your session, when the compiler was finished - but you can't see, if the job completed successful or not.
 
-Wouldn't it be nice, to see this - and not being interrupted?
+Wouldn't it be nice, to see the result - without being interrupted?
 
-I don't remember, where and when I have seen this "trick" first - but is was somewhere in the early to mid 1990s, and I use it since then. And when I searched for it lately, I hard a hard time, finding the tip somewhere online, so I thought, it wouold be good to have it in my blog.
+I don't remember, where and when I have seen this "trick" first - but is was somewhere in the early to mid 1990s, and I use it since then. And when I searched for it lately, I hard a hard time, finding the tip somewhere online, so I thought, it would be good to have it in my blog.
 
-So - I have not invented this - but I also don't know exactly who has - so I gicve credit to the *unknown programmer* who saved me a lot of time in the last 30 years.
+I haven't invented this idea - and sadly, I also don't know who exactly has - so I have to give credit to the *unknown programmer* who saved me a lot of time in the last 30 years - Thank You!
+
+But now dive in ...
 
 ### Creating a Break Message Handling Program
 
 First, we have to create a small CLP / CLLE program that will handle the messages for us. 
 
-```clle
+```cl
 PGM (&MSGQ &MSGQLIB &MSGMRK)
 DCL &MSGQ TYPE(*CHAR) LEN(10)
 DCL &MSGQLIB TYPE(*CHAR) LEN(10)
@@ -61,7 +63,7 @@ Next, we need to attach our *break message handler* program to our message queue
 
 Check with the command `CHGPRF` if you already have an `INLPGM`. If this is the case, you can add the commands to it - otherwise create a new one.
 
-```clle
+```cl
 PGM
 
 DCL &MSGQ TYPE(*CHAR) LEN(10)
