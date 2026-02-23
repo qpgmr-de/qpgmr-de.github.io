@@ -98,7 +98,7 @@ The last step is to attach the *initializing program* to your user profile.
 CHGPRF INLPGM(YOURLIB/STARTMEUP)
 ```
 
-THe command `CHGPRF` can be prompted with `F4` if you like - the `INLPGM` is something like the `.profile` in typical **nix* operating systems. It is executed when a user logs in.
+The command `CHGPRF` can be prompted with `F4` if you like - the `INLPGM` is something like the `.profile` in typical **nix* operating systems. It is executed when a user logs in.
 
 ### Finally
 
