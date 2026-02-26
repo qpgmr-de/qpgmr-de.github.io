@@ -55,10 +55,10 @@ than that of the original procedure. If you don't code a `RETURN` in `ON-EXIT` o
 (like in our example) the original return value is returned.
 
 `ON-EXIT` is by far the easiest and most straight-forward solution, to clean up after yourself.
-But the `ON-EXIT` opcode is only available for "linear" procedures. So `ON-EXIT` is no option, if you
-use a "cycle" main procedure. But for this case, you have the next option.
+But the `ON-EXIT` opcode is only available for "linear" procedures. So `ON-EXIT` is no option inside a
+"cycle" main procedure. But for this case, you need the next option.
 
-`ON-EXIT` is also no solution if there is a time differnce between the end of your procedure, and
+`ON-EXIT` is also no solution if there is a time difference between the end of your procedure, and
 the clean-up. Like when you have a process consisting of several calls, and you want to make sure,
 that finally your clean-up procedure gets called, no matter what happens.
 
