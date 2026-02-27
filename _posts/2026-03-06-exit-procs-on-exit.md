@@ -201,4 +201,6 @@ The `ON-EXIT` sub-procedure is by far the easiest and most straight-forward solu
 clean up. I use it all the time - closing files or SQL cursors, checking for correct 
 execution, logging errors and addition information and much more. 
 
-I hope you enyoyed this post
+I hope you enyoyed this post - and if you have questions or ideas - I have opened the 
+[Discussions](https://github.com/qpgmr-de/qpgmr-de.github.io/discussions)
+page of this repository - so, if you like, leave a comment.
