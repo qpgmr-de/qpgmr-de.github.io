@@ -2,7 +2,15 @@
 
 In my blog post [Consuming a web service with SQL on IBM i](2021-08-19-consume-webservice-with-sql)
 I wrote about the SQL table function [`JSON_TABLE`](https://www.ibm.com/docs/en/i/7.6.0?topic=functions-json-table)
-from a very broad view. I only had one example, and did not describe the *JsonPath* syntax in detail.
+from a very broad view. But I only had one example, and did not describe the *JsonPath* syntax in detail.
+So I wanted to dive a bit deeping into that useful function.
+
+Another point was, than many developers seem to run into some problems with [Scott Klements YAJL](https://www.scottklement.com/yajl/)
+- at least many mails on the [Midrang.com mailing lists](https://lists.midrange.com/) seem to indicate that.
+And on that mailing lists, my answer is in 99% of all cases: *Why don't you try `JSON_TABLE`?*
+
+Given that, together with you, I want to dive a bit deeping into `JSON_TABLE` and also show some
+edge cases, that I solved with memebers of the mailing lists.
 
 ### `JSON_TABLE`
 
