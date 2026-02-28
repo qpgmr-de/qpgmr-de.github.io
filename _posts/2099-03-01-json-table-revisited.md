@@ -1,6 +1,11 @@
 ## `JSON_TABLE` re-visited
 
-In my blog post 
+In my blog post [Consuming a web service with SQL on IBM i](2021-08-19-consume-webservice-with-sql)
+I wrote about the SQL table function [`JSON_TABLE`](https://www.ibm.com/docs/en/i/7.6.0?topic=functions-json-table)
+from a very broad view. I only had one example, and did not describe the *JsonPath* syntax in detail.
+
+### `JSON_TABLE`
+
 
 https://www.ibm.com/docs/en/i/7.6.0?topic=functions-json-table
 
