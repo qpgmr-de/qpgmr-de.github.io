@@ -205,8 +205,9 @@ The `ON-EXIT` sub-procedure is by far the easiest and most straight-forward solu
 clean up. I use it all the time - closing files or SQL cursors, checking for correct 
 execution, logging errors and addition information and much more. 
 
-In the following post in this series about *exit procedures* we will have a look at the
-
+In the following post in this series about *exit procedures* we will have a look at an API
+that not only works with *linear* procedures, but also with *cycle* main procedures - and
+any other type of call stack entry. So stay tuned.
 
 I hope you enyoyed this post - and if you have questions or ideas - I have opened the 
 [Discussions](https://github.com/qpgmr-de/qpgmr-de.github.io/discussions)
