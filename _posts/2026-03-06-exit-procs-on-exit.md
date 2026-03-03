@@ -72,6 +72,8 @@ was **NOT** active.
 
 Now we want to test the abnormal end - so we modify like this:
 ```rpgle
+**free
+//...
 dcl-proc myProcedure;
   dcl-pi *n ind extproc(*dclcase);
   end-pi;
@@ -117,6 +119,8 @@ What happens, when we end the program or job *forcefully*. Like with `SysReq` op
 an `ENDJOB` command. So let's modify our procedure again - this time with an endless loop:
 
 ```rpgle
+**free
+//...
 dcl-proc dcl-proc myProcedure;
   dcl-pi *n ind extproc(*dclcase);
   end-pi;
