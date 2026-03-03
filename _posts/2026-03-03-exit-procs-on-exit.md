@@ -1,4 +1,4 @@
-## Running "automatic" exit procedures
+## Running "automatic" exit procedures with `ON-EXIT`
 
 In programming, cleaning up behind you is important. Nobody wants to leave a mess when 
 a procedure, program, service program or job ends - even if it ends "unplaned" (with 
