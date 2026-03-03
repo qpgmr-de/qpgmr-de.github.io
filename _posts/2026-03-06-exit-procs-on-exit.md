@@ -4,9 +4,9 @@ In programming, cleaning up behind you is important. Nobody wants to leave a mes
 a procedure, program, service program or job ends - even if it ends "unplaned" (with 
 an error or exception), "furcefully" (like `ENDJOB`) or perfectly fine. 
 
-In this and upcoming posts, I want to discuss and descript the common options that we have, 
-to gracefully end our procedures, programs, service programs or jobs, even when an error or 
-exception occurs or the job is ended unplaned.
+In post - and at least 2 upcoming posts - I want to discuss and describe the common 
+options that we have, to gracefully end our procedures, programs, service programs 
+or jobs, even when an error or exception occurs or the job is ended unplaned.
 
 First we take a look not only at the most modern option, but also at easiest to implement - 
 the `ON-EXIT` statement in ILE-RPG.
