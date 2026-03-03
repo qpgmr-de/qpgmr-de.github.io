@@ -199,7 +199,7 @@ You cannot use `ON-EXIT` inside a **cycle** main procedure - those where you hav
 `*ILR` to `*ON` to end the program (like in our example). But you can use them in each and 
 every procedure that might get called from than cycle main procedure.
 
-### `ON-EXIT`
+### `ON-EXIT` *finally*
 
 The `ON-EXIT` sub-procedure is by far the easiest and most straight-forward solution, to 
 clean up. I use it all the time - closing files or SQL cursors, checking for correct 
