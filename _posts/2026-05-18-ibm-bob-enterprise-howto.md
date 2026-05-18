@@ -3,7 +3,9 @@ tags: Bob Enterprise
 ---
 ## IBM Bob Enterprise subscriptions - Where do I even start?
 
-IBM Bob is probably the *hottest* piece of software and service right now in the IBM universe.
+IBM Bob is probably the hottest piece of software and service right now in the IBM universe. So maybe your company already subscribed to an IBM Bob Enterprise plan.
+
+But where to you start with it? Let's get our feet wet ...
 
 ### Configuring your IBM SaaS Instance
 
@@ -51,23 +53,21 @@ details and has set up the SaaS instance.**
 
 ### Use your Enterprise subscription in the Bob IDE
 
-The last step is for each user. Most probably your users already participated in the 
-free IBM Bob Trial - and this means, that the IBM ID already has a SaaS instance and
-a Team associated. So each user might have to switch the team, to use the Enterprise 
-subscription.
+This last step is for each user. Most probably the users already participated in the free 
+IBM Bob Trial. And this means, that their IBM ID already has a SaaS instance and a Team 
+associated. So each user might have to switch the team, to use the Enterprise subscription.
   
 - After logging in click on the small gear to open the Bob Settings:
   
   ![Bob Team Selection](/assets/img/2026-05-18-bob-team-selection.png)
 
-Now you should be able to use the Enterprise subscription that are associated to your 
-IBM ID.
-
-Also when you participated in the free IBM Bob Trial and make a individual subscription
-later, you might have to switch the "Team" in the Bob IDE, as your paid subscription and
-the free trial may use different "Teams".
+Now you should be able to use the Enterprise subscription that are associated to your IBM ID.
 
 ### Finally
 
-As our team had a bit of a hard time to get this all going, I hope this helps others to
-get their Enterprise subscriptions going.
+As our team had a bit of a hard time to get this all going, I hope this helps others to get 
+their Enterprise subscriptions going.
+
+Also when you participated in the free IBM Bob Trial and make a individual subscription 
+later, you might have to switch the “Team” in the Bob IDE, as your paid subscription and 
+the free trial may use different “Teams”.
