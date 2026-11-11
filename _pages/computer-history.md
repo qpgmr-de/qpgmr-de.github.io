@@ -26,7 +26,7 @@ Sadly at home, I didn't have a Sidecar - so after some time, I decided to leave 
 
 ### Becoming a professional software developer
 
-After completing secondary school ("Realschule" in German) in 1986, I've was a car mechanic trainee in my parents company. When I had finished the training, I went back to technical college to get my diploma ("Fachabitur" in German). And following that I decided to make my computer hobby a profession, and switched to vocational school ("[Berufsfachschule](https://www.bsz-wiesau.de/informatik-campus)" in German). 
+After completing secondary school ("Realschule" in German) in 1986, I've was a car mechanic trainee in my parents company. When I had finished the training, I went back to technical college to get my diploma ("Fachabitur" in German). And following that I decided to make my computer hobby a profession, and switched to vocational college ("[Berufsfachschule](https://www.bsz-wiesau.de/informatik-campus)" in German). 
 
 The school teached me computer hardware, software developement techniques, [C](https://en.wikipedia.org/wiki/C_(programming_language)), [COBOL](https://en.wikipedia.org/wiki/COBOL), [Mainframe Assembly language](https://en.wikipedia.org/wiki/IBM_Basic_assembly_language_and_successors), database systems and design, [SQL](https://en.wikipedia.org/wiki/SQL) and finally [RPG](https://en.wikipedia.org/wiki/IBM_RPG).
 
