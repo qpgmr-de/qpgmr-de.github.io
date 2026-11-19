@@ -9,13 +9,13 @@ If you are new to IBM i and RPG, it can be a bit overwhelming to know where to s
 
 One of the best tutorials to get started with IBM i is Rainier Letidjawa's tutorial on "What is IBM i?" This tutorial provides a comprehensive overview of the IBM i platform, its architecture, and its capabilities.
 
-- https://rainierio.dev/learn
+- [https://rainierio.dev/learn](https://rainierio.dev/learn)
 
 ### Getting free access to an IBM i system
 
 If you don't have access to an IBM i at work, you can get free access to an IBM i system by signing up at PUB400 - an IBM i system that is suppplied Holger Scherer of www.POWERbunker.com. It's  available for public use.
 
-- https://www.pub400.com/
+- [https://www.pub400.com/](https://www.pub400.com/)
 
 After signing up, you will receive an email with your login credentials. For the rest of this tutorial, we will assume your credentials are:
 
@@ -28,7 +28,7 @@ But before you can use the system, you need to know, that system level access (a
 
    If you use windows, you need a SSH client like [PuTTY](https://www.chiark.greenend.org.uk/%7Esgtatham/putty/) installed on your computer. 
 
-   - https://www.chiark.greenend.org.uk/%7Esgtatham/putty
+   - [https://www.chiark.greenend.org.uk/%7Esgtatham/putty](https://www.chiark.greenend.org.uk/%7Esgtatham/putty)
 
    After installing PuTTY, you can connect to the PUB400 system by entering the following information in the PuTTY configuration window:
 
@@ -80,7 +80,7 @@ But before you can use the system, you need to know, that system level access (a
    For this, you first need a 5250 emulator installed on your computer. 
    There are many free and paid options available, but the standard solution is [IBM i Access Client Solutions](https://www.ibm.com/support/pages/ibm-i-access-client-solutions) - or short *iACS*.
 
-   - https://www.ibm.com/support/pages/ibm-i-access-client-solutions
+   - [https://www.ibm.com/support/pages/ibm-i-access-client-solutions](https://www.ibm.com/support/pages/ibm-i-access-client-solutions)
 
    You need an IBM ID to download the software. And as IBMi Access Client Solutions is a Java application, you also need to have Java installed on your computer.
 
