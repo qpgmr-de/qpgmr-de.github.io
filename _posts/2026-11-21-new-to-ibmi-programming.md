@@ -38,7 +38,7 @@ So which one should you use?
 | AI assistant | via extensions (e.g. GitHub Copilot) | Bob is built in |
 | IBM i specific AI | no | with the Premium Package for i |
 | Extensions from | VS Code Marketplace | Open VSX |
-| Supported platforms | Windows, macOS, Linux | Windows x64, macOS on Apple Silicon |
+| Supported platforms | Windows, macOS, Linux | Windows, macOS, Linux |
 
 My personal recommendation for a beginner: **start with VS Code**. It's free, it doesn't expire, and everything you learn there works 1:1 in Bob later. When you get to the point where you want an AI pair programmer that knows your IBM i, give Bob a try. I've written about [IBM Bob on macOS]({% post_url 2026-04-15-ibm-bob-on-macos %}) and [IBM Bob Enterprise subscriptions]({% post_url 2026-05-18-ibm-bob-enterprise-howto %}) before.
 
@@ -101,6 +101,8 @@ Code for IBM i talks to your IBM i via **SSH** - the same SSH we already used in
    Password       : ourSecret
    ```
 
+   Of course you have created your own credentials on PUB400 - use those instead of the example above.
+
    Don't forget the port! PUB400 does **not** use the standard SSH port 22, but **2222**.
 
    ![Code for IBM i - connection details](/assets/img/2026-11-21-codefori-connection-details.png)
@@ -128,6 +130,14 @@ Right click on your library in the Object Browser and select **Create Source Fil
 ```
 CRTSRCPF FILE(NEW2IBMI1/QRPGLESRC) RCDLEN(112)
 ```
+
+Also here - you have your own libraries on PUB400. Our example profile would get 3 libraries:
+
+- `NEW2IBMI1` = first library 
+- `NEW2IBMI2` = second library
+- `NEW2IBMIB` = backup library
+
+So replace `NEW2IBMI1` with your own library name.
 
 Now right click on `QRPGLESRC` and select **Create Member**. Enter `HELLO.RPGLE` as the name - the extension becomes the *member type*, which tells the system (and VS Code) that this is RPG.
 
@@ -158,7 +168,15 @@ To run the program, switch to your 5250 session in iACS and enter:
 CALL HELLO
 ```
 
-You should see the message `DSPLY  Hello IBM i!` at the bottom of the screen - press Enter, and that's it. Congratulations, you have written, compiled and run your first RPG program on IBM i!
+You should see the message `DSPLY  Hello IBM i!` at the bottom of the screen:
+
+![PUB400 - CALL HELLO](/assets/img/2026-11-21-pub400-call-hello.png)
+
+Press Enter, and that's it. 
+
+You should see a status message saying `Hello, World!` in the last line of the screen. 
+
+Congratulations, you have written, compiled and run your first RPG program on IBM i!
 
 ### What's next?
 
