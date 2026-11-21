@@ -94,11 +94,11 @@ But before you can use the system, you need to know, that system level access (a
 
    In the main iACS window, select the PUB400 system and click on "5250 Emulator" to open a 5250 session. Enter your credentials when prompted. You should now be connected to the PUB400 system and see the signon screen.
 
-   ![iACS](/assets/img/2016-11-13-pub400-signon.png)
+   ![iACS](/assets/img/2026-11-13-pub400-signon.png)
 
    Enter your credentials again and press Enter.
 
-   ![iACS](/assets/img/2016-11-13-pub400-main.png)
+   ![iACS](/assets/img/2026-11-13-pub400-main.png)
    
    Probably the signon screen was skipped and you landed directly on the main menu. 
 
