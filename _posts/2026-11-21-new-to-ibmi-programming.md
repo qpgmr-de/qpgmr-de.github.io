@@ -1,7 +1,7 @@
 ---
 tags: IBMi, RPG, VS-Code, Code-for-IBMi, IBM-Bob, PUB400
 ---
-## New to IBM i and RPG? - Let's write some code!
+## New to IBM i and RPG? - Let's start coding!
 
 In my [last post]({% post_url 2026-11-13-new-to-ibmi %}) we got access to PUB400 and had a first look around - via SSH and via the 5250 emulator in iACS. Now it's time to write our first program.
 
